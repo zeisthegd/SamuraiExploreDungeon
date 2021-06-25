@@ -9,7 +9,12 @@ ModelImporter:
   - first:
       74: -1825697389152778536
     second: Kenshi | Run
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: ae1a3f2f92158784fae891b8ae1cbf86, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0

@@ -7,8 +7,8 @@ using UnityEngine;
 [Serializable]
 public class House : MonoBehaviour
 {
-    List<Room> roomsData = new List<Room>();//data
-    private List<GameObject> rooms=  new List<GameObject>();//obj
+    private List<Room> roomsData = new List<Room>();//data
+    private List<GameObject> rooms = new List<GameObject>();//obj
 
     void Start()
     {
@@ -36,16 +36,26 @@ public class House : MonoBehaviour
     {
         for (int i = 0; i < roomsData.Count; i++)
         {
-            GameObject roomObj = new GameObject();
-            roomObj.name = $"Room[i]";
-            roomObj.isStatic = true;
-            rooms.Add(roomObj);
-
-            var roomScript = roomObj.AddComponent<Room>();
-            roomScript.Cells = roomsData[i].Cells;
-
-            roomObj.transform.parent = this.transform;
+            CreateRoomObj(i);
         }
+    }
+
+    private void CreateRoomObj(int i)
+    {
+        GameObject roomObj = new GameObject();
+        rooms.Add(roomObj);
+        var roomScript = roomObj.AddComponent<Room>();
+        Room.Copy(roomsData[i], roomScript);
+
+        roomObj.name = $"Room[{i}]";
+        roomObj.isStatic = true;
+        roomObj.transform.parent = this.transform;
+    }
+
+
+    private void SpawnMonsters()
+    {
+
     }
 
     public List<Room> RoomsData { get => roomsData; set => roomsData = value; }

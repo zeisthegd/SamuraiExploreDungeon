@@ -9,8 +9,9 @@ public class MouseLook : MonoBehaviour
     MovementSettings settings;
     [SerializeField]
     LayerMask hitMask;
+    Vector3 worldMousePosition;
 
-    Vector3 target;
+
     void Start()
     {
         playerBody = (Transform)GetComponent<Transform>();
@@ -29,12 +30,12 @@ public class MouseLook : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 100f, hitMask))
         {
-            target = hit.point;
-            target.y = 0;
+            worldMousePosition = hit.point;
+            worldMousePosition.y = 0;
         }
 
-        Vector3 rayDir = target - Camera.main.transform.position;
-        playerBody.LookAt(target);
+        Vector3 rayDir = worldMousePosition - Camera.main.transform.position;
+        playerBody.LookAt(worldMousePosition);
     }
 
     //For controller
@@ -44,5 +45,7 @@ public class MouseLook : MonoBehaviour
 
         playerBody.rotation = Quaternion.Euler(Vector3.up * mouseX);
     }
+
+    public Vector3 WorldMousePosition { get => worldMousePosition; set => worldMousePosition = value; }
 
 }

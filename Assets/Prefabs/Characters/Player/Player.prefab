@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 8930975846598040991}
   - component: {fileID: 8930975846598040976}
   - component: {fileID: 8930975846598040990}
+  - component: {fileID: 994068663429247967}
   - component: {fileID: 8930975846598040977}
   m_Layer: 11
   m_Name: Player
@@ -91,7 +92,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34ef0c97a875a3d4f9db0a1b6e817213, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSettings: {fileID: 11400000, guid: d0d384421e91ca64180a65bb89fcd607, type: 2}
 --- !u!114 &8930975846598040990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102,6 +102,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e05d1b84a7ec427479c5c9a35ca033e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  settings: {fileID: 11400000, guid: d0d384421e91ca64180a65bb89fcd607, type: 2}
+  hitMask:
+    serializedVersion: 2
+    m_Bits: 768
+--- !u!114 &994068663429247967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8930975846598040979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0824384f4575ea64bb66f2803ea21c44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   settings: {fileID: 11400000, guid: d0d384421e91ca64180a65bb89fcd607, type: 2}
@@ -220,8 +236,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2000000, guid: 6070b1377c2920547be98efb1187179c, type: 3}
+      propertyPath: near clip plane
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000000, guid: 6070b1377c2920547be98efb1187179c, type: 3}
       propertyPath: m_CullingMask.m_Bits
-      value: 1845
+      value: 1335
       objectReference: {fileID: 0}
     - target: {fileID: 2000002, guid: 6070b1377c2920547be98efb1187179c, type: 3}
       propertyPath: field of view
@@ -236,8 +256,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2000002, guid: 6070b1377c2920547be98efb1187179c, type: 3}
+      propertyPath: near clip plane
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000002, guid: 6070b1377c2920547be98efb1187179c, type: 3}
       propertyPath: m_CullingMask.m_Bits
-      value: 1845
+      value: 1335
       objectReference: {fileID: 0}
     - target: {fileID: 2000004, guid: 6070b1377c2920547be98efb1187179c, type: 3}
       propertyPath: field of view
@@ -252,8 +276,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2000004, guid: 6070b1377c2920547be98efb1187179c, type: 3}
+      propertyPath: near clip plane
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000004, guid: 6070b1377c2920547be98efb1187179c, type: 3}
       propertyPath: m_CullingMask.m_Bits
-      value: 1845
+      value: 1335
       objectReference: {fileID: 0}
     - target: {fileID: 2000006, guid: 6070b1377c2920547be98efb1187179c, type: 3}
       propertyPath: field of view
@@ -268,8 +296,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2000006, guid: 6070b1377c2920547be98efb1187179c, type: 3}
+      propertyPath: near clip plane
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000006, guid: 6070b1377c2920547be98efb1187179c, type: 3}
       propertyPath: m_CullingMask.m_Bits
-      value: 1845
+      value: 1335
       objectReference: {fileID: 0}
     - target: {fileID: 2000008, guid: 6070b1377c2920547be98efb1187179c, type: 3}
       propertyPath: field of view
@@ -284,8 +316,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2000008, guid: 6070b1377c2920547be98efb1187179c, type: 3}
+      propertyPath: near clip plane
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000008, guid: 6070b1377c2920547be98efb1187179c, type: 3}
       propertyPath: m_CullingMask.m_Bits
-      value: 1845
+      value: 1335
       objectReference: {fileID: 0}
     - target: {fileID: 2000010, guid: 6070b1377c2920547be98efb1187179c, type: 3}
       propertyPath: field of view
@@ -300,8 +336,108 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2000010, guid: 6070b1377c2920547be98efb1187179c, type: 3}
+      propertyPath: near clip plane
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000010, guid: 6070b1377c2920547be98efb1187179c, type: 3}
       propertyPath: m_CullingMask.m_Bits
-      value: 1845
+      value: 1335
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 6070b1377c2920547be98efb1187179c, type: 3}
+      propertyPath: m_MaskColor.b
+      value: 0.7164471
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 6070b1377c2920547be98efb1187179c, type: 3}
+      propertyPath: m_MaskColor.g
+      value: 0.8075165
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 6070b1377c2920547be98efb1187179c, type: 3}
+      propertyPath: m_MaskColor.r
+      value: 0.8679245
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 6070b1377c2920547be98efb1187179c, type: 3}
+      propertyPath: m_DistanceFade
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 6070b1377c2920547be98efb1187179c, type: 3}
+      propertyPath: m_MaskColor.b
+      value: 0.7164471
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 6070b1377c2920547be98efb1187179c, type: 3}
+      propertyPath: m_MaskColor.g
+      value: 0.8075165
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 6070b1377c2920547be98efb1187179c, type: 3}
+      propertyPath: m_MaskColor.r
+      value: 0.8679245
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 6070b1377c2920547be98efb1187179c, type: 3}
+      propertyPath: m_DistanceFade
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: 6070b1377c2920547be98efb1187179c, type: 3}
+      propertyPath: m_MaskColor.b
+      value: 0.7164471
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: 6070b1377c2920547be98efb1187179c, type: 3}
+      propertyPath: m_MaskColor.g
+      value: 0.8075165
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: 6070b1377c2920547be98efb1187179c, type: 3}
+      propertyPath: m_MaskColor.r
+      value: 0.8679245
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: 6070b1377c2920547be98efb1187179c, type: 3}
+      propertyPath: m_DistanceFade
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400006, guid: 6070b1377c2920547be98efb1187179c, type: 3}
+      propertyPath: m_MaskColor.b
+      value: 0.7164471
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400006, guid: 6070b1377c2920547be98efb1187179c, type: 3}
+      propertyPath: m_MaskColor.g
+      value: 0.8075165
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400006, guid: 6070b1377c2920547be98efb1187179c, type: 3}
+      propertyPath: m_MaskColor.r
+      value: 0.8679245
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400006, guid: 6070b1377c2920547be98efb1187179c, type: 3}
+      propertyPath: m_DistanceFade
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400008, guid: 6070b1377c2920547be98efb1187179c, type: 3}
+      propertyPath: m_MaskColor.b
+      value: 0.7164471
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400008, guid: 6070b1377c2920547be98efb1187179c, type: 3}
+      propertyPath: m_MaskColor.g
+      value: 0.8075165
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400008, guid: 6070b1377c2920547be98efb1187179c, type: 3}
+      propertyPath: m_MaskColor.r
+      value: 0.8679245
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400008, guid: 6070b1377c2920547be98efb1187179c, type: 3}
+      propertyPath: m_DistanceFade
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400010, guid: 6070b1377c2920547be98efb1187179c, type: 3}
+      propertyPath: m_MaskColor.b
+      value: 0.7164471
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400010, guid: 6070b1377c2920547be98efb1187179c, type: 3}
+      propertyPath: m_MaskColor.g
+      value: 0.8075165
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400010, guid: 6070b1377c2920547be98efb1187179c, type: 3}
+      propertyPath: m_MaskColor.r
+      value: 0.8679245
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400010, guid: 6070b1377c2920547be98efb1187179c, type: 3}
+      propertyPath: m_DistanceFade
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6070b1377c2920547be98efb1187179c, type: 3}

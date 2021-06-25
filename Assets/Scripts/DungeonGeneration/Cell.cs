@@ -58,7 +58,7 @@ public class Cell : MonoBehaviour
     private void BuildWall(int direction)
     {
         Destroy(direction, availWalls[direction]);
-        CreateDoor(direction);
+        //SpawnDoor(direction);
     }
 
 
@@ -78,7 +78,7 @@ public class Cell : MonoBehaviour
         Destroy(wallObj.gameObject);
     }
 
-    private void CreateDoor(int direction)
+    private void SpawnDoor(int direction)
     {
         if (isDoor && availWalls[direction] == true)
         {
@@ -86,7 +86,7 @@ public class Cell : MonoBehaviour
             Instantiate(door, doorDir);
 
             door.transform.position = Vector3.zero;
-            door.transform.rotation = Quaternion.Euler(0, 180, 0);
+            door.transform.rotation = Quaternion.Euler(0, 0, 0);
             DestroyWall(direction);
         }
     }

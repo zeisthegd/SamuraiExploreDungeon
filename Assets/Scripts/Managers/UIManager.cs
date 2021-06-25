@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] GameObject inventoryUI;
+    [SerializeField] GameObject pauseMenu;
+    
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         

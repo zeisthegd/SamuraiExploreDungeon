@@ -18,6 +18,7 @@ public class Room : MonoBehaviour
     {
         GetThemeAndSettings();
         SpawnCells();
+        SpawnPlayerDetectionBox();
     }
 
     private void SpawnCells()
@@ -49,6 +50,7 @@ public class Room : MonoBehaviour
         this.settings = settings;
     }
 
+    #region Data Processing
     public bool TryCreateRoom()
     {
         System.Random random = new System.Random();
@@ -138,5 +140,45 @@ public class Room : MonoBehaviour
         return isInMaze;
     }
 
+    public static void Copy(Room original, Room copy)
+    {
+        copy.topLeft = original.topLeft;
+        copy.bottomRight = original.bottomRight;
+        copy.Cells = original.Cells;
+    }
+
+    #endregion
+
+    private void SpawnPlayerDetectionBox()
+    {
+        var detBox = gameObject.AddComponent<BoxCollider>();
+        var centerOfRoom = GetCenterOfRoom();
+        float sizeX = (bottomRight.x - topLeft.x) * settings.CellPositionOffset + 4F;
+        float sizeY = (bottomRight.y - topLeft.y) * settings.CellPositionOffset + 4F;
+
+        detBox.center = centerOfRoom;
+        detBox.size = new Vector3(sizeX, 2F, sizeY);
+        detBox.isTrigger = true;
+    }
+
+    public Vector3 GetCenterOfRoom()
+    {
+        Vector3 sumVector = new Vector3(0f, 0f, 0f);
+        foreach (Transform child in this.transform)
+        {
+            sumVector += child.position;
+        }
+
+        Vector3 groupCenter = sumVector / cellObjs.Count;
+        return groupCenter;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log(gameObject.name + $"|| {other.name}");
+    }
+
     public List<Cell> Cells { get => cells; set => cells = value; }
+    public Vector2 TopLeft { get => topLeft; set => topLeft = value; }
+    public Vector2 BottomRight { get => bottomRight; set => bottomRight = value; }
 }
