@@ -7,7 +7,13 @@ using UnityEngine;
 public class DungeonTheme : ScriptableObject
 {
     public GameObject Cell;
-    public GameObject[] LesserMonsters;
-    public GameObject[] GreaterMonsters;
+    [Header("Monsters")]
+    public List<GameObject> LesserMonsters;
+    public List<GameObject> GreaterMonsters;
     public GameObject Boss;
+
+    [Header("Spawners")]
+    public GameObject MonsterSpawner;
+    public GameObject ItemSpawner;
+
 }

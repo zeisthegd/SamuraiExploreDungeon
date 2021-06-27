@@ -52,12 +52,6 @@ public class House : MonoBehaviour
         roomObj.transform.parent = this.transform;
     }
 
-
-    private void SpawnMonsters()
-    {
-
-    }
-
     public List<Room> RoomsData { get => roomsData; set => roomsData = value; }
 
 

@@ -7,18 +7,19 @@ using UnityEngine;
 [Serializable]
 public class Room : MonoBehaviour
 {
-    Vector2 topLeft, bottomRight;
     List<Cell> cells = new List<Cell>();
     List<GameObject> cellObjs;
+    Vector2 topLeft, bottomRight;
     DungeonTheme theme;
     GenerationSettings settings;
     Maze maze;
 
     void Start()
     {
-        GetThemeAndSettings();
+        GetSettingsUtil.GetDungThemeAndGenSettings(ref settings, ref theme);
         SpawnCells();
         SpawnPlayerDetectionBox();
+        InstantiateSpawners();
     }
 
     private void SpawnCells()
@@ -37,12 +38,6 @@ public class Room : MonoBehaviour
         }
     }
 
-    private void GetThemeAndSettings()
-    {
-        theme = FindObjectOfType<DungeonGenerator>().Theme;
-        settings = FindObjectOfType<DungeonGenerator>().Settings;
-
-    }
 
     public Room(Maze maze, GenerationSettings settings)
     {
@@ -161,6 +156,11 @@ public class Room : MonoBehaviour
         detBox.isTrigger = true;
     }
 
+    private void InstantiateSpawners()
+    {
+        Instantiate(theme.MonsterSpawner, transform.position, Quaternion.identity, this.transform);
+    }
+
     public Vector3 GetCenterOfRoom()
     {
         Vector3 sumVector = new Vector3(0f, 0f, 0f);
@@ -175,10 +175,16 @@ public class Room : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(gameObject.name + $"|| {other.name}");
+        Debug.Log($"Player entered + | {name}");
+        OnPlayerEnterRoom?.Invoke();
     }
 
+    public delegate void OnPlayerEnterRoomDelegate();
+    public event OnPlayerEnterRoomDelegate OnPlayerEnterRoom;
+
+
     public List<Cell> Cells { get => cells; set => cells = value; }
-    public Vector2 TopLeft { get => topLeft; set => topLeft = value; }
-    public Vector2 BottomRight { get => bottomRight; set => bottomRight = value; }
+    public Vector2 TopLeft { get => topLeft; }
+    public Vector2 BottomRight { get => bottomRight; }
+    public List<GameObject> CellObjs { get => cellObjs; }
 }

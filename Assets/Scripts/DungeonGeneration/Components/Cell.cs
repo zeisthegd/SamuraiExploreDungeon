@@ -55,6 +55,8 @@ public class Cell : MonoBehaviour
 
     }
 
+    #region Cell Constructing
+
     private void BuildWall(int direction)
     {
         Destroy(direction, availWalls[direction]);
@@ -91,6 +93,10 @@ public class Cell : MonoBehaviour
         }
     }
 
+    #endregion
+
+
+    #region Data Processing
     public void UpdateAvailableWalls(Cell[,] map)
     {
         int mapLength = (int)Math.Sqrt(map.Length);
@@ -123,9 +129,17 @@ public class Cell : MonoBehaviour
         cellscrpit.IsDoor = data.IsDoor;
     }
 
+    #endregion
+
+
     private Transform GetDirection(int direction)
     {
         return transform.Find(Directions[direction]);
+    }
+
+    public void Spawn(GameObject something, Transform parent)
+    {
+        Instantiate(something,transform.position,Quaternion.identity,parent);   
     }
 
     public Vector2 Position { get => position; set => position = value; }

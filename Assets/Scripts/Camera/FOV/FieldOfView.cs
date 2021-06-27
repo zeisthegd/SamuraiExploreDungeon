@@ -5,8 +5,7 @@ using UnityEngine;
 public class FieldOfView : MonoBehaviour
 {
     public float viewRadius;
-    [Range(0, 360)]
-    public float viewAngle;
+    [Range(180, 360)] public float viewAngle;
     public int edgeResolveIteration;
     public float edgeDistanceThresshold;
 
@@ -18,21 +17,20 @@ public class FieldOfView : MonoBehaviour
     public MeshFilter viewMeshFilter;
     private Mesh viewMesh;
 
-    [HideInInspector]
-    public List<Transform> visibleTargets = new List<Transform>();
+
+    [HideInInspector] public List<Transform> visibleTargets = new List<Transform>();
 
     void Start()
     {
         viewMesh = new Mesh();
         viewMesh.name = "View Mesh";
-        viewMeshFilter.mesh = viewMesh;
 
         StartCoroutine(nameof(FindTargetWithDelay), .2F);
     }
 
     void LateUpdate()
     {
-        DrawFieldOfView();
+        //DrawFieldOfView();
     }
 
     IEnumerator FindTargetWithDelay(float delay)
@@ -60,6 +58,7 @@ public class FieldOfView : MonoBehaviour
                 if (!Physics.Raycast(transform.position, directionToTarget, dstToTarget, obstacleMask))
                 {
                     visibleTargets.Add(target);
+                    Debug.Log(target.name);
                 }
             }
         }

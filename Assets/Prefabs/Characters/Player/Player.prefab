@@ -79,7 +79,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &8930975846598040976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,7 +132,7 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 771fe80730d49eb47b2a481f67bd0b58, type: 3}
   m_Controller: {fileID: 9100000, guid: a13f8f4b76d833b41b3f2ecc5a554592, type: 2}
-  m_CullingMode: 0
+  m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
