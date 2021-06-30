@@ -10,24 +10,33 @@ public class Maze : MonoBehaviour
     int roomCreated = 0;
 
     private Cell[,] map;
-    private List<GameObject> corridorCells;
+    private List<GameObject> corridorCells = new List<GameObject>();
+
+    Vector2 startCellPosition;
+    Transform startingCell;
 
     GenerationSettings settings;
     DungeonTheme theme;
     House house;
 
+
     void Awake()
     {
-        GetThemeAndSettings();
-        InitCells();
-        InitRooms();
-        SpawnHouse();
-        GenerateCorridors();
+        GetSettingsUtil.GetDungThemeAndGenSettings(ref settings, ref theme);
+        CreateNewDungeon();
     }
 
     void Start()
     {
         SpawnCorridorCells();
+    }
+
+    public void CreateNewDungeon()
+    {
+        InitCells();
+        InitRooms();
+        SpawnHouse();
+        GenerateCorridors();
     }
 
     private void InitCells()
@@ -124,6 +133,7 @@ public class Maze : MonoBehaviour
     {
         List<Cell> corCells = GetNonRoomCells();
         Cell startCell = corCells[MathUtility.GetRandomPositiveNumber(corCells.Count)];
+        startCellPosition = startCell.Position;
         RunMazeAlgorithm(startCell);
     }
 
@@ -220,7 +230,7 @@ public class Maze : MonoBehaviour
 
     #endregion
 
-    #region Instantiate
+    #region Maze Building
     private void SpawnCorridorCells()
     {
         foreach (Cell cell in map)
@@ -233,8 +243,22 @@ public class Maze : MonoBehaviour
 
                 cellInstance.GetComponent<Cell>().CopyCellValue(map[(int)cPos.x, (int)cPos.y]);
                 cellInstance.name = $"Cell[{cPos.x},{cPos.y}]";
+
+                corridorCells.Add(cellInstance);
             }
         }
+        startingCell = transform.Find($"Cell[{startCellPosition.x},{startCellPosition.y}]");
+        FindObjectOfType<GameManager>().OnDungeonLoaded();
+
+    }
+
+    IEnumerable DestroyAllCells()
+    {
+        Cell[] cells = FindObjectsOfType<Cell>();
+        if (cells.Length != 0)
+            foreach (Cell cell in cells)
+                Destroy(cell.gameObject);
+        yield return new WaitForSeconds(5);
     }
 
     private void GetThemeAndSettings()
@@ -267,6 +291,7 @@ public class Maze : MonoBehaviour
 
     public Cell[,] Map { get => map; }
     public GenerationSettings Settings { get => settings; set => settings = value; }
+    public Transform StartingCell { get => startingCell; }
 }
 
 

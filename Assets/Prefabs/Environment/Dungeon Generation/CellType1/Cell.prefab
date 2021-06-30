@@ -63,7 +63,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5059601853212535418}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 1, z: 2.35}
+  m_LocalPosition: {x: 0, y: 2, z: 2.35}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1014509845095392961}
@@ -94,7 +94,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5059601853313777072}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -2.35, y: 1, z: 0}
+  m_LocalPosition: {x: -2.35, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6438420105203932585}
@@ -125,7 +125,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5059601853387676511}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -2.35}
+  m_LocalPosition: {x: 0, y: 2, z: -2.35}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 522682949552830947}
@@ -179,10 +179,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3e9092ea350b0a4a93df18fe54afb07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  door: {fileID: 7090876015080748396, guid: aac140c961ea65c41b89bd2e221cab8a, type: 3}
-  availWalls: 00010100
   isDoor: 0
   isRoomCell: 0
+  availWalls: 00010100
+  door: {fileID: 7090876015080748396, guid: aac140c961ea65c41b89bd2e221cab8a, type: 3}
 --- !u!1 &5059601854374107041
 GameObject:
   m_ObjectHideFlags: 0
@@ -207,7 +207,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5059601854374107041}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 2.35, y: 1, z: 0}
+  m_LocalPosition: {x: 2.35, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5226161393580406122}

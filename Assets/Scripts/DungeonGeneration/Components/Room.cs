@@ -9,7 +9,9 @@ public class Room : MonoBehaviour
 {
     List<Cell> cells = new List<Cell>();
     List<GameObject> cellObjs;
+
     Vector2 topLeft, bottomRight;
+    
     DungeonTheme theme;
     GenerationSettings settings;
     Maze maze;
@@ -22,21 +24,7 @@ public class Room : MonoBehaviour
         InstantiateSpawners();
     }
 
-    private void SpawnCells()
-    {
-        cellObjs = new List<GameObject>();
-        foreach (Cell cell in cells)
-        {
-            Vector2 cPos = new Vector2(cell.Position.x, cell.Position.y);
-            Vector3 spawnPos = new Vector3((cPos.x * settings.CellPositionOffset), 0, (cPos.y * settings.CellPositionOffset));
-            var cellObj = Instantiate(theme.Cell, spawnPos, Quaternion.identity, this.transform);
 
-            cellObj.GetComponent<Cell>().CopyCellValue(cell);
-            cellObj.name = $"Cell[{cPos.x},{cPos.y}]";
-
-            cellObjs.Add(cellObj);
-        }
-    }
 
 
     public Room(Maze maze, GenerationSettings settings)
@@ -144,6 +132,23 @@ public class Room : MonoBehaviour
 
     #endregion
 
+    #region Room Building
+    private void SpawnCells()
+    {
+        cellObjs = new List<GameObject>();
+        foreach (Cell cell in cells)
+        {
+            Vector2 cPos = new Vector2(cell.Position.x, cell.Position.y);
+            Vector3 spawnPos = new Vector3((cPos.x * settings.CellPositionOffset), 0, (cPos.y * settings.CellPositionOffset));
+            var cellObj = Instantiate(theme.Cell, spawnPos, Quaternion.identity, this.transform);
+
+            cellObj.GetComponent<Cell>().CopyCellValue(cell);
+            cellObj.name = $"Cell[{cPos.x},{cPos.y}]";
+
+            cellObjs.Add(cellObj);
+        }
+    }
+
     private void SpawnPlayerDetectionBox()
     {
         var detBox = gameObject.AddComponent<BoxCollider>();
@@ -175,12 +180,13 @@ public class Room : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log($"Player entered + | {name}");
         OnPlayerEnterRoom?.Invoke();
     }
 
-    public delegate void OnPlayerEnterRoomDelegate();
-    public event OnPlayerEnterRoomDelegate OnPlayerEnterRoom;
+
+    #endregion
+
+    public event System.Action OnPlayerEnterRoom;
 
 
     public List<Cell> Cells { get => cells; set => cells = value; }

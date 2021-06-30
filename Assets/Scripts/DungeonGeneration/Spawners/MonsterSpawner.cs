@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class MonsterSpawner : MonoBehaviour
 {
-    int currentWaveCount = 1;
+    enum MonsterType { Lesser, Greater };
     [SerializeField] MonsterSpawnSettings monsterSpawnSettings;
+    int currentWaveCount = 1;
     int currentTotalMonsters = 0;
     List<GameObject> cellObjs;
     List<int> usedCells;
-    enum MonsterType { Lesser, Greater };
+
+    
     DungeonTheme theme;
     Room room;
 
@@ -56,7 +58,6 @@ public class MonsterSpawner : MonoBehaviour
 
     public void SpawnMonsterWave()
     {
-        Debug.Log("Begin spawning");
         SpawnMonsterOfType(MonsterType.Lesser);
         //SpawnMonsterOfType(MonsterType.Greater); ///TODO: make a greater pls
     }

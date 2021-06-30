@@ -7,21 +7,16 @@ using UnityEngine;
 public class Cell : MonoBehaviour
 {
     public static string[] Directions = new string[] { "North", "East", "South", "West" };
-    [SerializeField]
-    GameObject door;
-    private Vector2 position;
+    [SerializeField] private bool isDoor;
+    [SerializeField] private bool isRoomCell;
+    [SerializeField] private bool[] availWalls;//NESW
+    [SerializeField] GameObject door;
+
     private bool isVisited;
     private bool[] availDirections;//NESW
-    [SerializeField]
-    private bool[] availWalls;//NESW
     private bool closeToRoom;
-    [SerializeField]
-    private bool isDoor;
-    [SerializeField]
-    private bool isRoomCell;
     private bool triedCreateHere;
-
-
+    private Vector2 position;
 
     public Cell()
     {
@@ -41,8 +36,6 @@ public class Cell : MonoBehaviour
 
     }
 
-    //The cell will only have to render the available walls
-    //when its data has been processed
     void Start()
     {
         BuildCell();
@@ -60,7 +53,7 @@ public class Cell : MonoBehaviour
     private void BuildWall(int direction)
     {
         Destroy(direction, availWalls[direction]);
-        //SpawnDoor(direction);
+        SpawnDoor(direction);
     }
 
 
@@ -85,7 +78,7 @@ public class Cell : MonoBehaviour
         if (isDoor && availWalls[direction] == true)
         {
             var doorDir = transform.Find(Directions[direction]);
-            Instantiate(door, doorDir);
+            //Instantiate(door, doorDir);
 
             door.transform.position = Vector3.zero;
             door.transform.rotation = Quaternion.Euler(0, 0, 0);
@@ -139,7 +132,7 @@ public class Cell : MonoBehaviour
 
     public void Spawn(GameObject something, Transform parent)
     {
-        Instantiate(something,transform.position,Quaternion.identity,parent);   
+        Instantiate(something, transform.position, Quaternion.identity, parent);
     }
 
     public Vector2 Position { get => position; set => position = value; }

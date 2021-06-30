@@ -2,12 +2,10 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-
 public class DungeonGenerator : MonoBehaviour
 {
     [SerializeField] DungeonTheme theme;
     [SerializeField] GenerationSettings settings;
-    [SerializeField] GameObject cellType;
     [SerializeField] bool toGenerate = false;
     [SerializeField] float positionOffset;
 

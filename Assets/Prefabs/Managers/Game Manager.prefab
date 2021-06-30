@@ -86,6 +86,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a83a1b59f9d0f884d8b3319a895b544f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryUI: {fileID: 0}
+  pauseMenu: {fileID: 0}
 --- !u!1 &5765535386032145977
 GameObject:
   m_ObjectHideFlags: 0
@@ -116,6 +118,7 @@ Transform:
   m_Children:
   - {fileID: 34296173}
   - {fileID: 1038006092}
+  - {fileID: 8910316680551379940}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -133,4 +136,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioManager: {fileID: 34296172}
   uIManager: {fileID: 1038006091}
+  playerManager: {fileID: 2414237218783324656}
   currentState: 0
+  level: {fileID: 4510411286968197653, guid: 422005744ca6e864bbf66a4a6287b7e5, type: 3}
+--- !u!1 &7992711181630907005
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8910316680551379940}
+  - component: {fileID: 2414237218783324656}
+  m_Layer: 0
+  m_Name: PlayerManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8910316680551379940
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7992711181630907005}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5765535386032145978}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2414237218783324656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7992711181630907005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 880359ee0c78f844c97ebbcbe0f786c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 8930975846598040976, guid: aff4bd2892c6a6847af4aa920958deb2, type: 3}

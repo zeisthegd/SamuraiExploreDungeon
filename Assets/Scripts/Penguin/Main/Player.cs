@@ -10,7 +10,6 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
-        Cursor.lockState = CursorLockMode.None;
     }
     void Start()
     {
