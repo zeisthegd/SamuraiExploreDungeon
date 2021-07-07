@@ -47,7 +47,6 @@ public class MonsterSpawner : MonoBehaviour
     {
         if (currentWaveCount < monsterSpawnSettings.numberOfWaves)
         {
-            CurrentWaveCount += 1;
             SpawnMonsterWave();
         }
         else

@@ -36,7 +36,7 @@ public class PlayerManager : MonoBehaviour
 
     private bool PlayerIsSpawned()
     {
-        return !FindObjectOfType<Player>().Equals(null);
+        return FindObjectOfType<Player>() != null;
     }
 
 }

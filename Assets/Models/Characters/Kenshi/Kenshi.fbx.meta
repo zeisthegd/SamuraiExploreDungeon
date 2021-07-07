@@ -4,16 +4,19 @@ ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable:
   - first:
-      74: 6471969714284809985
-    second: Kenshi | Idle
+      74: 7509104387414014831
+    second: KenshiAmature|Idle
   - first:
-      74: -1825697389152778536
-    second: Kenshi | Run
+      74: -4509085027164993389
+    second: KenshiAmature|Run
+  - first:
+      74: 766670822597720743
+    second: KenshiAmature|Charge
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Material.001
+      name: Kenshi
     second: {fileID: 2100000, guid: ae1a3f2f92158784fae891b8ae1cbf86, type: 2}
   materials:
     materialImportMode: 1
@@ -43,8 +46,8 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Kenshi | Idle
-      takeName: Kenshi|KenshiAction
+      name: KenshiAmature|Idle
+      takeName: KenshiAmature|KenshiAction
       internalID: 0
       firstFrame: 0
       lastFrame: 30
@@ -72,8 +75,8 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Kenshi | Run
-      takeName: Kenshi|KenshiAction
+      name: KenshiAmature|Run
+      takeName: KenshiAmature|KenshiAction
       internalID: 0
       firstFrame: 40
       lastFrame: 70
@@ -84,6 +87,35 @@ ModelImporter:
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: KenshiAmature|Charge
+      takeName: KenshiAmature|KenshiAction
+      internalID: 0
+      firstFrame: 75
+      lastFrame: 80
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0

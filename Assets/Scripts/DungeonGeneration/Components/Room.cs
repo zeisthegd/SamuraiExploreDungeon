@@ -7,11 +7,12 @@ using UnityEngine;
 [Serializable]
 public class Room : MonoBehaviour
 {
+    bool playerEnter = false;
     List<Cell> cells = new List<Cell>();
     List<GameObject> cellObjs;
 
     Vector2 topLeft, bottomRight;
-    
+
     DungeonTheme theme;
     GenerationSettings settings;
     Maze maze;
@@ -180,7 +181,11 @@ public class Room : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        OnPlayerEnterRoom?.Invoke();
+        if (playerEnter == false)
+        {
+            OnPlayerEnterRoom?.Invoke();
+            playerEnter = true;
+        }
     }
 
 

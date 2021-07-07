@@ -17,7 +17,6 @@ public class FieldOfView : MonoBehaviour
     public MeshFilter viewMeshFilter;
     private Mesh viewMesh;
 
-
     [HideInInspector] public List<Transform> visibleTargets = new List<Transform>();
 
     void Start()
@@ -25,7 +24,7 @@ public class FieldOfView : MonoBehaviour
         viewMesh = new Mesh();
         viewMesh.name = "View Mesh";
 
-        StartCoroutine(nameof(FindTargetWithDelay), .2F);
+        StartCoroutine(nameof(FindTargetWithDelay), .5F);
     }
 
     void LateUpdate()
@@ -58,7 +57,6 @@ public class FieldOfView : MonoBehaviour
                 if (!Physics.Raycast(transform.position, directionToTarget, dstToTarget, obstacleMask))
                 {
                     visibleTargets.Add(target);
-                    Debug.Log(target.name);
                 }
             }
         }
