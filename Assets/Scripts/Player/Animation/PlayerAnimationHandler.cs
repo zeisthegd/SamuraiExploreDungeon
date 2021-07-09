@@ -13,9 +13,14 @@ public class PlayerAnimationHandler : AnimationHandler
         SetBool("isRunning", isRunningCondition);
     }
 
-    public void SetCharge(bool isHoldingChargeButton)
+    public void SetCharge(bool isCharing)
     {
-        SetBool("isCharging", isHoldingChargeButton);
+        SetBool("isCharging", isCharing);
+    }
+
+    public void SetCanDash(bool canDash)
+    {
+        SetBool("canDash", canDash);
     }
 
 

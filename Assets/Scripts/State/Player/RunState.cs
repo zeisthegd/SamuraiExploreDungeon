@@ -19,7 +19,7 @@ public class RunState : PlayerState
         base.Update();
         animationHandler.SetRunnning(movementController.HasRunInput);
         StateChangeLogic();
-
+        Debug.Log(movementController.HasRunInput);
     }
 
     public override void StateChangeLogic()

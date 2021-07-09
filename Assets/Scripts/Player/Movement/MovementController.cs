@@ -10,12 +10,13 @@ public class MovementController : MonoBehaviour
     private Transform objectTrf;
     private Rigidbody rgBody;
     private PlayerStat playerStat;
+    [SerializeField] float dashPowerThreshold;
     [SerializeField] MovementSettings settings;
 
     float horInp = 0;
     float vertInp = 0;
-    bool haveToDash = false;
     float dashSpeed = 0;
+    bool canRefill = false;
 
 
 
@@ -28,7 +29,6 @@ public class MovementController : MonoBehaviour
 
         settings.camera = Camera.main;
     }
-
 
     public void Run()
     {
@@ -46,56 +46,20 @@ public class MovementController : MonoBehaviour
 
     public void Charge()
     {
-        if (Input.GetButton("Charge"))
-        {
-            haveToDash = false;
-            playerStat.CurrentStamina -= (settings.staminaDepletionRate * Time.deltaTime);
+        if (playerStat.CurrentStamina > 0)
             dashSpeed += (settings.dashSpeedIncrementRate * Time.deltaTime);
-        }
-        if (Input.GetButtonUp("Charge") || playerStat.CurrentStamina <= 0)
-        {
-            haveToDash = true;
-        }
-
+        DepleteStamina();
     }
 
 
     public void Dash()
     {
-        if (haveToDash)
+        if (dashSpeed >= dashPowerThreshold)
         {
             rgBody.AddForce(transform.forward * dashSpeed, ForceMode.Impulse);
-            haveToDash = false;
-            dashSpeed = 0;
-            OnPlayerDash?.Invoke();
         }
-    }
-
-    public void Slash()
-    {
-
-    }
-
-    public void CheckToRefillStamina()
-    {
-        if (playerStat.CurrentStamina <= playerStat.MaxStamina)
-        {
-            StartCoroutine(nameof(WaitTillRefill));
-            StartCoroutine(nameof(RefillStamina));
-        }
-    }
-
-    IEnumerator RefillStamina()
-    {
-        while (playerStat.CurrentStamina <= playerStat.MaxStamina)
-        {
-
-        }
-        yield return new WaitForSeconds(5);
-    }
-    IEnumerator WaitTillRefill()
-    {
-        yield return new WaitForSeconds(2);
+        else UnableToDash?.Invoke();
+        dashSpeed = 0;
     }
 
     private void RotateDirection45Deg(ref Vector3 direction)
@@ -108,8 +72,34 @@ public class MovementController : MonoBehaviour
             direction = Quaternion.Euler(0F, horAngle - rotateOffset, 0F) * Vector3.forward;
         }
     }
-    public System.Action OnPlayerDash;
 
+    private void DepleteStamina()
+    {
+        playerStat.CurrentStamina -= (settings.staminaDepletionRate * Time.deltaTime);
+        StopAllCoroutines();
+        StartCoroutine(RefillStamina());
+        playerStat.CurrentStamina = Mathf.Clamp(playerStat.CurrentStamina, 0, playerStat.MaxStamina);
+    }
+
+    public void RefillStaminaImmediately()
+    {
+        while (playerStat.CurrentStamina <= playerStat.MaxStamina)
+        {
+            playerStat.CurrentStamina += (settings.staminaDepletionRate * Time.deltaTime);
+        }
+    }
+
+    public IEnumerator RefillStamina()
+    {
+        yield return new WaitForSeconds(1);
+        while (playerStat.CurrentStamina <= playerStat.MaxStamina)
+        {
+            playerStat.CurrentStamina += (settings.staminaDepletionRate * Time.deltaTime);
+            yield return new WaitForSeconds(0.02F);
+        }
+    }
+
+    public System.Action UnableToDash;
 
     public bool HasRunInput { get { return horInp != 0 || vertInp != 0; } }
     public bool InsufficientStamina { get => playerStat.CurrentStamina <= 0; }

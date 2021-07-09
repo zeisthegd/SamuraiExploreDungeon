@@ -19,6 +19,18 @@ public abstract class PlayerState : State
         this.animationHandler = new PlayerAnimationHandler(animator);
     }
 
+    public virtual void Update()
+    {
+
+    }
+    public virtual void FixedUpdate()
+    {
+
+    }
+    public virtual void StateChangeLogic()
+    {
+
+    }
     public virtual void Enter()
     {
 
@@ -29,18 +41,5 @@ public abstract class PlayerState : State
 
     }
 
-    public virtual void FixedUpdate()
-    {
 
-    }
-
-    public virtual void StateChangeLogic()
-    {
-
-    }
-
-    public virtual void Update()
-    {
-        movementController.CheckToRefillStamina();
-    }
 }

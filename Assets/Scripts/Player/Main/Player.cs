@@ -10,7 +10,6 @@ public class Player : MonoBehaviour
     Rigidbody rgBody;
     Animator animator;
     MovementController movementController;
-
     PlayerStateMachine stateMachine;
 
     void Awake()

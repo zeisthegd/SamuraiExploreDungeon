@@ -9,6 +9,7 @@ public class PlayerStateMachine : StateMachine
     PlayerState runState;
     PlayerState slashState;
     PlayerState chargeState;
+    PlayerState dashState;
 
     public PlayerStateMachine(Player player)
     {
@@ -17,6 +18,7 @@ public class PlayerStateMachine : StateMachine
         runState = new RunState(player, this);
         slashState = new SlashState(player, this);
         chargeState = new ChargeAndDashState(player, this);
+        dashState = new DashState(player, this);
     }
 
     public void ChangeStateToIdle()
@@ -26,23 +28,23 @@ public class PlayerStateMachine : StateMachine
     public void ChangeStateToRun()
     {
         ChangeState(runState);
-
     }
     public void ChangeStateToSlash()
     {
         ChangeState(slashState);
-
     }
     public void ChangeStateToCharge()
     {
         ChangeState(chargeState);
-
+    }
+    public void ChangeStateToDash()
+    {
+        ChangeState(dashState);
     }
 
     public PlayerState IdleState { get => idleState; set => idleState = value; }
     public PlayerState RunState { get => runState; set => runState = value; }
     public PlayerState SlashState { get => slashState; set => slashState = value; }
     public PlayerState ChargeState { get => chargeState; set => chargeState = value; }
-
-
+    public PlayerState DashState { get => dashState; set => dashState = value; }
 }
