@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class IdleState : PlayerState
 {
-    public IdleState(Player player, Animator animator, MovementController movementController, PlayerAnimationHandler playerAnimationHandler) : base(player, animator, movementController, playerAnimationHandler)
+    public IdleState(Player player, PlayerStateMachine stateMachine) : base(player,stateMachine)
     {
     }
 
@@ -16,6 +16,7 @@ public class IdleState : PlayerState
     public override void Update()
     {
         base.Update();
+        StateChangeLogic();
     }
     public override void Enter()
     {
@@ -28,15 +29,18 @@ public class IdleState : PlayerState
     }
     public override void StateChangeLogic()
     {
-        if (Input.GetButtonDown("Horizontal") || Input.GetButtonDown("Vertical"))
+        if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
         {
-            player.ChangeStateToRun();
+            stateMachine.ChangeStateToRun();
         }
         if (Input.GetButton("Charge"))
         {
-            player.ChangeStateToCharge();
+            stateMachine.ChangeStateToCharge();
         }
     }
 
-
+    public override string ToString()
+    {
+        return "Idle";
+    }
 }

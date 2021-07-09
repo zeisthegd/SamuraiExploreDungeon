@@ -6,7 +6,8 @@ using UnityEngine;
 public class MovementSettings : ScriptableObject
 {
     public float moveSpeed;
-    public float dashSpeed;
+    public float staminaDepletionRate;//per frame
+    public float dashSpeedIncrementRate;//per frame
     public float onlandGravity;
     public float mouseSensitivity;
     public float turnSmooth;

@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Cell: {fileID: 5059601853903931715, guid: 6b5d28e85a4ba414e90e7a9dea672e77, type: 3}
   LesserMonsters:
-  - {fileID: 1360651715104984115, guid: 14f66bf1b4019984db6653a07e436dca, type: 3}
+  - {fileID: 993743185948770818, guid: 6a8bb59216fba2d4fba1f753c1999858, type: 3}
   GreaterMonsters: []
-  Boss: {fileID: 0}
+  Boss: {fileID: 993743185948770818, guid: 87a549d02b669364ca56da7744382fb8, type: 3}
   MonsterSpawner: {fileID: 4389276101006572199, guid: b6f49169241458e43bcbcd53b8eb8742,
     type: 3}
   ItemSpawner: {fileID: 7230032190740434077, guid: f15e7196597ef2f419b8efe02b38b3de,

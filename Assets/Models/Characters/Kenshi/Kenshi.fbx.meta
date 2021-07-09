@@ -12,6 +12,9 @@ ModelImporter:
   - first:
       74: 766670822597720743
     second: KenshiAmature|Charge
+  - first:
+      74: 8740602544233907293
+    second: KenshiAmature|RunBackward
   externalObjects:
   - first:
       type: UnityEngine:Material

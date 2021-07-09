@@ -58,7 +58,7 @@ public class MonsterSpawner : MonoBehaviour
     public void SpawnMonsterWave()
     {
         SpawnMonsterOfType(MonsterType.Lesser);
-        //SpawnMonsterOfType(MonsterType.Greater); ///TODO: make a greater pls
+        SpawnMonsterOfType(MonsterType.Greater); ///TODO: make a greater pls
     }
 
     private void SpawnMonsterOfType(MonsterType type)

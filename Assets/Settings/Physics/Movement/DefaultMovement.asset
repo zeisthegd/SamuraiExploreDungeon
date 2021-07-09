@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: DefaultMovement
   m_EditorClassIdentifier: Assembly-CSharp::MovementParam
   moveSpeed: 60
-  dashSpeed: 2500
+  staminaDepletionRate: 10
+  dashSpeedIncrementRate: 100
   onlandGravity: 10
   mouseSensitivity: 200
   turnSmooth: 0.075

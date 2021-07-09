@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RunState : PlayerState
 {
-    public RunState(Player player, Animator animator, MovementController movementController, PlayerAnimationHandler playerAnimationHandler) : base(player, animator, movementController, playerAnimationHandler)
+    public RunState(Player player, PlayerStateMachine stateMachine) : base(player, stateMachine)
     {
     }
 
@@ -17,27 +17,34 @@ public class RunState : PlayerState
     public override void Update()
     {
         base.Update();
-        playerAnimationHandler.SetRunnning(movementController.HasRunInput);
+        animationHandler.SetRunnning(movementController.HasRunInput);
+        StateChangeLogic();
 
     }
 
     public override void StateChangeLogic()
     {
+        if (!movementController.HasRunInput)
+            stateMachine.ChangeStateToIdle();
         if (Input.GetButton("Charge"))
-        {
-            player.ChangeStateToCharge();
-        }
+            stateMachine.ChangeStateToCharge();
     }
     public override void Enter()
     {
         base.Enter();
-        playerAnimationHandler.SetRunnning(true);
+        animationHandler.SetRunnning(true);
     }
 
     public override void Exit()
     {
         base.Exit();
-        playerAnimationHandler.SetRunnning(false);
+        animationHandler.SetRunnning(false);
+    }
+
+
+    public override string ToString()
+    {
+        return "Run";
     }
 
 }

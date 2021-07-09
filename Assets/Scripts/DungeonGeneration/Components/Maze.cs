@@ -252,7 +252,7 @@ public class Maze : MonoBehaviour
 
     }
 
-    IEnumerable DestroyAllCells()
+    IEnumerator DestroyAllCells()
     {
         Cell[] cells = FindObjectsOfType<Cell>();
         if (cells.Length != 0)

@@ -1,43 +1,38 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 //This is a state machine
 public class Player : MonoBehaviour
 {
-
+    [SerializeField] Text playerState;
     Rigidbody rgBody;
     Animator animator;
     MovementController movementController;
-    PlayerAnimationHandler playerAnimationHandler;
 
-
-    PlayerState currentState;
-    PlayerState idleState;
-    PlayerState runState;
-    PlayerState slashState;
-    PlayerState chargeState;
-
+    PlayerStateMachine stateMachine;
 
     void Awake()
     {
-
+        GetComponents();
+        stateMachine = new PlayerStateMachine(this);
     }
     void Start()
     {
-        GetComponents();
-        InitStateMachine();
+        stateMachine.Initialize(stateMachine.IdleState);
     }
 
 
     void Update()
     {
-        currentState.Update();
+        stateMachine.CurrentState.Update();
+        playerState.text = stateMachine.CurrentState.ToString();
     }
 
     void FixedUpdate()
     {
-        currentState.FixedUpdate();
+        stateMachine.CurrentState.FixedUpdate();
     }
 
     private void GetComponents()
@@ -45,48 +40,10 @@ public class Player : MonoBehaviour
         rgBody = GetComponent<Rigidbody>();
         movementController = GetComponent<MovementController>();
         animator = transform.GetChild(0).GetComponent<Animator>();
-        playerAnimationHandler = new PlayerAnimationHandler(animator);
     }
 
 
-    #region State Managing
-
-    public void ChangeStateToIdle()
-    {
-        currentState = idleState;
-    }
-    public void ChangeStateToRun()
-    {
-        currentState = runState;
-    }
-    public void ChangeStateToSlash()
-    {
-        currentState = slashState;
-    }
-    public void ChangeStateToCharge()
-    {
-        currentState = chargeState;
-    }
-
-    private void InitStateMachine()
-    {
-        idleState = new IdleState(this, animator, movementController, playerAnimationHandler);
-        runState = new RunState(this, animator, movementController, playerAnimationHandler);
-        slashState = new SlashState(this, animator, movementController, playerAnimationHandler);
-        chargeState = new ChargeAndDashState(this, animator, movementController, playerAnimationHandler);
-        currentState = idleState;
-    }
-
-    private void ChangeState(PlayerState newState)
-    {
-        currentState.Exit();
-        currentState = newState;
-        newState.Enter();
-    }
-
-
-    #endregion
-
-    public PlayerState CurrentState { get => currentState; }
-
+    public Rigidbody RigidBody { get => rgBody; }
+    public Animator Animator { get => animator; }
+    public MovementController MovementController { get => movementController; }
 }
