@@ -28,6 +28,7 @@ public class ChargeAndDashState : PlayerState
         if (HasStamina())
         {
             timeManager.BeginSlowMotion();
+            player.Sword.StartChargeEffect(1 / movementController.RemainingStaminaPercent());
             animationHandler.SetCharge(true);
         }
         else stateMachine.ChangeStateToIdle();
@@ -36,6 +37,7 @@ public class ChargeAndDashState : PlayerState
     {
         base.Exit();
         timeManager.EndSlowMotion();
+        player.Sword.StopChargeEffect();
         animationHandler.SetCharge(false);
     }
 

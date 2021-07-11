@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     [SerializeField] TimeManager timeManager;
+    [SerializeField] Sword sword;
     Rigidbody rgBody;
     Animator animator;
     MovementController movementController;
@@ -36,7 +37,7 @@ public class Player : MonoBehaviour
     private void CreateStateMachine()
     {
         stateMachine = new PlayerStateMachine(this);
-        stateMachine.Initialize(stateMachine.IdleState);    
+        stateMachine.Initialize(stateMachine.IdleState);
     }
 
     private void GetComponents()
@@ -56,5 +57,6 @@ public class Player : MonoBehaviour
     public Animator Animator { get => animator; }
     public MovementController MovementController { get => movementController; }
     public TimeManager TimeManager { get => timeManager; }
-    public PlayerStateMachine StateMachine { get => stateMachine; set => stateMachine = value; }
+    public PlayerStateMachine StateMachine { get => stateMachine;}
+    public Sword Sword { get => sword;}
 }

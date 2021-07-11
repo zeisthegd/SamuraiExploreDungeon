@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - DungeonGenerator
+  - Monster
+  - Boss
+  - VFX
   layers:
   - Default
   - TransparentFX

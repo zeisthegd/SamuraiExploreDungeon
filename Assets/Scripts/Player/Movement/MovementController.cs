@@ -111,7 +111,12 @@ public class MovementController : MonoBehaviour
 
     public System.Action UnableToDash;
 
+    public float RemainingStaminaPercent()
+    {
+        return playerStat.CurrentStamina / playerStat.MaxStamina;
+    }
     public bool HasRunInput { get { return horInp != 0 || vertInp != 0; } }
     public bool InsufficientStamina { get => playerStat.CurrentStamina <= 0; }
+
 
 }
