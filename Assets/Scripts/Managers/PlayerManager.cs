@@ -11,6 +11,7 @@ public class PlayerManager : MonoBehaviour
         Vector3 startPosition = new Vector3();
         startPosition = FindObjectOfType<Maze>().StartingCell.position;
         Instantiate(player, startPosition, Quaternion.identity);
+        PlayerIsSpawn?.Invoke();
     }
     private void LoadPlayerData()
     {
@@ -38,5 +39,7 @@ public class PlayerManager : MonoBehaviour
     {
         return FindObjectOfType<Player>() != null;
     }
+
+    public System.Action PlayerIsSpawn;
 
 }

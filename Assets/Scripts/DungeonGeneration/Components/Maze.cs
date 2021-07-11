@@ -8,6 +8,7 @@ using UnityEngine;
 public class Maze : MonoBehaviour
 {
     int roomCreated = 0;
+    int minAcceptableRooms = 0;
 
     private Cell[,] map;
     private List<GameObject> corridorCells = new List<GameObject>();
@@ -54,19 +55,21 @@ public class Maze : MonoBehaviour
 
     private void InitRooms()
     {
-        BruteForceSomeRooms();
-        if (roomCreated < settings.MinRooms)
+        minAcceptableRooms = settings.MinRooms + 1;
+        do
         {
+            minAcceptableRooms--;
             ClearTriedAttempts();
-            InitRooms();
+            BruteForceSomeRooms();
         }
+        while (roomCreated < minAcceptableRooms);
     }
 
     #region Room Generation
     public void BruteForceSomeRooms()
     {
         house = new House();
-        int randomRoomCount = MathUtility.GetRandomNumber(settings.MinRooms, settings.MaxRooms + 1);
+        int randomRoomCount = MathUtility.GetRandomNumber(minAcceptableRooms, settings.MaxRooms + 1);
         for (int i = 0; i < settings.MaxRoomTries || roomCreated < randomRoomCount; i++)
         {
             Room room = new Room(this, settings);

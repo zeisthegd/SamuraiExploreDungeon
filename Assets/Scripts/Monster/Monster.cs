@@ -5,9 +5,11 @@ using UnityEngine;
 public class Monster : MonoBehaviour
 {
     [SerializeField] MonsterData monsterData;
+    [SerializeField] Rigidbody rgBody;
+    Vector3 playerPos;
     void Start()
     {
-        CreateMonster();
+
     }
 
 
@@ -15,17 +17,15 @@ public class Monster : MonoBehaviour
     {
 
     }
-
-    void CreateMonster()
+    void FixedUpdate()
     {
-        InstantiateMonsterModel();
-    
+        ChasePlayer();
     }
-
-    void InstantiateMonsterModel()
+    void ChasePlayer()
     {
-        var mnsInstance = Instantiate(monsterData.monsterModel, this.transform.position, Quaternion.identity, this.transform);
-        mnsInstance.layer = gameObject.layer;
+        playerPos = FindObjectOfType<Player>().transform.position;
+        var dirToPlayer = (playerPos - this.transform.position).normalized;
+        rgBody.AddForce(dirToPlayer * 5 * Time.deltaTime, ForceMode.Impulse);
     }
 
 }

@@ -6,14 +6,22 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] GameObject inventoryUI;
     [SerializeField] GameObject pauseMenu;
-    
-    void Start()
+    [SerializeField] GameObject debugMenu;
+    [SerializeField] GameObject staminaBar;
+
+    public void DisplayUI()
     {
-        
+        ShowMenu(debugMenu);
+        CreatePlayerStaminaBar();
     }
 
-    void Update()
+    void ShowMenu(GameObject menu)
     {
-        
+        Instantiate(menu,Vector3.zero,Quaternion.identity);
+    }
+    void CreatePlayerStaminaBar()
+    {
+        Instantiate(staminaBar,Vector3.zero,Quaternion.identity);
+
     }
 }

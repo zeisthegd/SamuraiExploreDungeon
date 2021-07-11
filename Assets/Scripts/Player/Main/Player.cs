@@ -6,7 +6,7 @@ using UnityEngine.UI;
 //This is a state machine
 public class Player : MonoBehaviour
 {
-    [SerializeField] Text playerState;
+    [SerializeField] TimeManager timeManager;
     Rigidbody rgBody;
     Animator animator;
     MovementController movementController;
@@ -15,23 +15,28 @@ public class Player : MonoBehaviour
     void Awake()
     {
         GetComponents();
-        stateMachine = new PlayerStateMachine(this);
+        FindEssentialGameObjects();
     }
     void Start()
     {
-        stateMachine.Initialize(stateMachine.IdleState);
+        CreateStateMachine();
     }
 
 
     void Update()
     {
         stateMachine.CurrentState.Update();
-        playerState.text = stateMachine.CurrentState.ToString();
     }
 
     void FixedUpdate()
     {
         stateMachine.CurrentState.FixedUpdate();
+    }
+
+    private void CreateStateMachine()
+    {
+        stateMachine = new PlayerStateMachine(this);
+        stateMachine.Initialize(stateMachine.IdleState);    
     }
 
     private void GetComponents()
@@ -41,8 +46,15 @@ public class Player : MonoBehaviour
         animator = transform.GetChild(0).GetComponent<Animator>();
     }
 
+    private void FindEssentialGameObjects()
+    {
+        timeManager = FindObjectOfType<TimeManager>();
+    }
+
 
     public Rigidbody RigidBody { get => rgBody; }
     public Animator Animator { get => animator; }
     public MovementController MovementController { get => movementController; }
+    public TimeManager TimeManager { get => timeManager; }
+    public PlayerStateMachine StateMachine { get => stateMachine; set => stateMachine = value; }
 }

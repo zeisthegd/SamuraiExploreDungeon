@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1855a1b085794447859b3984097e027, type: 3}
   m_Name: DefaultMovement
   m_EditorClassIdentifier: Assembly-CSharp::MovementParam
-  moveSpeed: 225
+  moveSpeed: 200
   staminaDepletionRate: 20
   dashSpeedIncrementRate: 200
   onlandGravity: 60

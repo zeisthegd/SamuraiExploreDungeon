@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] AudioManager audioManager;
     [SerializeField] UIManager uIManager;
+    [SerializeField] TimeManager timeManager;
     [SerializeField] PlayerManager playerManager;
     [SerializeField] GameState currentState;
     [SerializeField] GameObject level;
@@ -16,19 +17,24 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         Cursor.lockState = CursorLockMode.Confined;
+
         OnDungeonInstantiated += playerManager.LoadPlayer;
+        playerManager.PlayerIsSpawn += EnableUI;
+        currentState = GameState.Playing;
+
     }
     void Start()
     {
-        CreateDungeon();
+        GenerateDungeon();
     }
 
     void Update()
     {
-
+        
     }
 
-    public void CreateDungeon()
+    [ContextMenu("Generate Dungeon")]
+    public void GenerateDungeon()
     {
         Instantiate(level, Vector3.zero, Quaternion.identity);
     }
@@ -36,6 +42,11 @@ public class GameManager : MonoBehaviour
     public void OnDungeonLoaded()
     {
         OnDungeonInstantiated?.Invoke();
+    }
+
+    private void EnableUI()
+    {
+        uIManager.DisplayUI();
     }
 
     public enum GameState
