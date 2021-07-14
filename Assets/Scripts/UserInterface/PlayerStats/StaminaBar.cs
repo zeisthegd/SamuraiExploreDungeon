@@ -7,22 +7,15 @@ public class StaminaBar : UserInterface
 {
     DisplayUI displayUI;
     Slider slider;
-    MovementController movementController;
+    public FloatEventChannelSO OnPlayerStaminaChanged;
     public override void Start()
     {
         base.Start();
         displayUI = GetComponent<DisplayUI>();
         slider = GetComponent<Slider>();
-        slider.maxValue = player.GetComponent<PlayerStat>().MaxStamina;
-        slider.value = slider.maxValue;
-        movementController = player.MovementController;
-        movementController.OnStaminaChanged += DisplayStamina;
-    }
 
-    // Update is called once per frame
-    public override void Update()
-    {
-        base.Update();
+        slider.maxValue = player.Stats.MaxStamina;
+        slider.value = slider.maxValue;
 
     }
 
@@ -32,4 +25,14 @@ public class StaminaBar : UserInterface
         slider.value = stamina;
     }
 
+    void OnEnable()
+    {
+        OnPlayerStaminaChanged.OnEventRaised += DisplayStamina;
+
+    }
+
+    void OnDisable()
+    {
+        OnPlayerStaminaChanged.OnEventRaised -= DisplayStamina;
+    }
 }

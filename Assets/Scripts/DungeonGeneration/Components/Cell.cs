@@ -135,6 +135,16 @@ public class Cell : MonoBehaviour
         Instantiate(something, transform.position, Quaternion.identity, parent);
     }
 
+    public bool IsSearched()
+    {
+        foreach(bool direction in AvailWalls)
+        {
+            if(direction == false)
+                return true;
+        }
+        return false;
+    }
+
     public Vector2 Position { get => position; set => position = value; }
     public bool IsVisited { get => isVisited; set => isVisited = value; }
     public bool[] AvailDirections { get => availDirections; set => availDirections = value; }

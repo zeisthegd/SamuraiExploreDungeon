@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GetSettingsUtil : MonoBehaviour
 {
-    public static void GetDungThemeAndGenSettings(ref GenerationSettings settings, ref DungeonTheme theme)
+    public static void GetDungThemeAndGenSettings(ref DungeonTheme theme, ref GenerationSettings settings)
     {
         GetDungeonGenSettings(ref settings);
         GetDungeonTheme(ref theme);

@@ -7,37 +7,31 @@ using UnityEngine;
 [Serializable]
 public class Maze : MonoBehaviour
 {
-    int roomCreated = 0;
-    int minAcceptableRooms = 0;
+    [SerializeField] int roomCreated = 0;
+    [SerializeField] int minAcceptableRooms = 0;
 
     private Cell[,] map;
     private List<GameObject> corridorCells = new List<GameObject>();
 
     Vector2 startCellPosition;
-    Transform startingCell;
+    [SerializeField] Transform startingCell;
 
-    GenerationSettings settings;
-    DungeonTheme theme;
-    House house;
+    [SerializeField] GenerationSettings settings;
+    [SerializeField] DungeonTheme theme;
+    [SerializeField] House house;
 
 
-    void Awake()
-    {
-        GetSettingsUtil.GetDungThemeAndGenSettings(ref settings, ref theme);
-        CreateNewDungeon();
-    }
-
-    void Start()
-    {
-        SpawnCorridorCells();
-    }
-
+    [ContextMenu("Create New Maze")]
     public void CreateNewDungeon()
     {
+        GetSettingsUtil.GetDungThemeAndGenSettings(ref theme, ref settings);
         InitCells();
-        InitRooms();
-        SpawnHouse();
+        GenerateRoomDatas();
+        GenerateHouse();
         GenerateCorridors();
+        SearchRemainingLeftoverCells();
+        SpawnCorridorCells();
+        house.SpawnRooms();
     }
 
     private void InitCells()
@@ -53,7 +47,7 @@ public class Maze : MonoBehaviour
         }
     }
 
-    private void InitRooms()
+    private void GenerateRoomDatas()
     {
         minAcceptableRooms = settings.MinRooms + 1;
         do
@@ -68,7 +62,7 @@ public class Maze : MonoBehaviour
     #region Room Generation
     public void BruteForceSomeRooms()
     {
-        house = new House();
+        house = transform.Find("House").gameObject.GetComponent<House>();
         int randomRoomCount = MathUtility.GetRandomNumber(minAcceptableRooms, settings.MaxRooms + 1);
         for (int i = 0; i < settings.MaxRoomTries || roomCreated < randomRoomCount; i++)
         {
@@ -138,6 +132,27 @@ public class Maze : MonoBehaviour
         Cell startCell = corCells[MathUtility.GetRandomPositiveNumber(corCells.Count)];
         startCellPosition = startCell.Position;
         RunMazeAlgorithm(startCell);
+    }
+
+    public void SearchRemainingLeftoverCells()
+    {
+        for (int i = 0; i < 20; i++)
+        {
+            List<Cell> corCells = GetUnsearchedCells();
+            Cell startCell = corCells[MathUtility.GetRandomPositiveNumber(corCells.Count)];
+            RunMazeAlgorithm(startCell);
+        }
+    }
+
+    private List<Cell> GetUnsearchedCells()
+    {
+        List<Cell> cells = new List<Cell>();
+        foreach (Cell cell in map)
+        {
+            if (cell.IsRoomCell == false && !cell.IsSearched())
+                cells.Add(cell);
+        }
+        return cells;
     }
 
     private void RunMazeAlgorithm(Cell cell)
@@ -251,7 +266,6 @@ public class Maze : MonoBehaviour
             }
         }
         startingCell = transform.Find($"Cell[{startCellPosition.x},{startCellPosition.y}]");
-        FindObjectOfType<GameManager>().OnDungeonLoaded();
 
     }
 
@@ -264,36 +278,19 @@ public class Maze : MonoBehaviour
         yield return new WaitForSeconds(5);
     }
 
-    private void GetThemeAndSettings()
-    {
-        settings = FindObjectOfType<DungeonGenerator>().Settings;
-        theme = FindObjectOfType<DungeonGenerator>().Theme;
-    }
-
     #endregion
     private void ClearTriedAttempts()
     {
         InitCells();
     }
 
-    private void SpawnHouse()
+    private void GenerateHouse()
     {
-        if (!GameObject.Find("House"))
-        {
-            GameObject houseObj = new GameObject();
-            houseObj.isStatic = true;
-            var houseSrcipt = houseObj.AddComponent<House>();
-            houseSrcipt.RoomsData = this.house.RoomsData;
-            houseObj.name = "House";
-
-            houseObj.transform.parent = this.transform;
-            houseSrcipt.GenerateRoomsData();
-        }
+        house.GenerateRoomsInterior();
     }
 
 
     public Cell[,] Map { get => map; }
-    public GenerationSettings Settings { get => settings; set => settings = value; }
     public Transform StartingCell { get => startingCell; }
 }
 

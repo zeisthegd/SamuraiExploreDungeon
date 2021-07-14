@@ -32,15 +32,17 @@ public class Sword : MonoBehaviour
         {
             ParticleSystem.MainModule main = effect.main;
             main.simulationSpeed = playBackSpeed;
+            main.simulationSpeed = Mathf.Clamp(main.simulationSpeed, 0.2f, playBackSpeed);
             effect.Play();
         }
     }
 
-    public virtual void StopChargeEffect()
+    public virtual void SpeedUpChargeEffect()
     {
         foreach (ParticleSystem effect in chargeParticles)
         {
-            effect.Stop();
+            ParticleSystem.MainModule main = effect.main;
+            main.simulationSpeed *= 5;
         }
     }
 

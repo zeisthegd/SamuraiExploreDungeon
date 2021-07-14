@@ -36,8 +36,8 @@ public class ChargeAndDashState : PlayerState
     public override void Exit()
     {
         base.Exit();
-        timeManager.EndSlowMotion();
-        player.Sword.StopChargeEffect();
+        player.Sword.SpeedUpChargeEffect();
+        timeManager.EndSlowMotion();     
         animationHandler.SetCharge(false);
     }
 

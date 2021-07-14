@@ -1,17 +1,19 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class MonsterSpawner : MonoBehaviour
 {
     enum MonsterType { Lesser, Greater };
-    [SerializeField] MonsterSpawnSettings monsterSpawnSettings;
     int currentWaveCount = 1;
     int currentTotalMonsters = 0;
     List<GameObject> cellObjs;
     List<int> usedCells;
+    [SerializeField] MonsterSpawnSettings monsterSpawnSettings;
+    [SerializeField] StringEventChannelSO OnPlayerEnterRoom;
 
-    
+
     DungeonTheme theme;
     Room room;
 
@@ -21,7 +23,17 @@ public class MonsterSpawner : MonoBehaviour
         room = GetComponentInParent<Room>();
         cellObjs = room.CellObjs;
         usedCells = new List<int>();
-        room.OnPlayerEnterRoom += SpawnMonsterWave;
+    }
+
+    void OnEnable()
+    {
+        OnPlayerEnterRoom.OnEventRaised += SpawnFirstMonsterWave;
+
+    }
+
+    void OnDisable()
+    {
+        OnPlayerEnterRoom.OnEventRaised -= SpawnFirstMonsterWave;
     }
     void Update()
     {
@@ -39,6 +51,12 @@ public class MonsterSpawner : MonoBehaviour
                 OnPlayerClearCurrentWave();
             }
         }
+    }
+
+    private void SpawnFirstMonsterWave(string roomName)
+    {
+        if (room.name == roomName)
+            SpawnMonsterWave();
     }
 
 

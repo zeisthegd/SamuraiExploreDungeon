@@ -2,30 +2,44 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStat : CharacterStat
+[CreateAssetMenu(menuName = "Stats/Player", fileName = "Player Stats")]
+public class PlayerStat : ScriptableObject
 {
-    [SerializeField] Stat stamina;
-    [SerializeField] float currentStamina;
+    [SerializeField] Stat baseStamina;
+    [SerializeField] Stat baseHP;
 
-    void Start()
+    float currentStamina;
+    int currentHP;
+
+    public FloatEventChannelSO OnStaminaChanged;
+    public FloatEventChannelSO OnHPChanged;
+    void OnEnable()
     {
-        currentStamina = stamina.BaseValue;
+        currentStamina = baseStamina.BaseValue;
+        currentHP = baseHP.BaseValue;
     }
 
-    public override void Die()
+    public int CurrentHP
     {
-        base.Die();
-        //Die sfx
+        get => currentHP;
+        set
+        {
+            currentHP = (value >= 0) ? value : 0;
+            currentHP = (value <= MaxHP) ? value : MaxHP;
+            OnHPChanged.RaiseEvent(currentHP);
+        }
     }
-
-    public float MaxStamina { get => stamina.BaseValue; }
     public float CurrentStamina
     {
         get => currentStamina;
         set
         {
             currentStamina = (value >= 0) ? value : 0;
+            currentStamina = (value <= MaxStamina) ? value : MaxStamina;
+            OnStaminaChanged.RaiseEvent(currentStamina);
         }
     }
 
+    public int MaxStamina { get => baseStamina.BaseValue; }
+    public int MaxHP { get => baseHP.BaseValue; }
 }

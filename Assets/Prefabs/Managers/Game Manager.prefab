@@ -53,6 +53,9 @@ MonoBehaviour:
   playerManager: {fileID: 2414237218783324656}
   currentState: 0
   level: {fileID: 4510411286968197653, guid: 422005744ca6e864bbf66a4a6287b7e5, type: 3}
+  OnDungeonGenerated: {fileID: 11400000, guid: 04b01d189153dc240b20856106351a4d, type: 2}
+  OnPlayerInstantiated: {fileID: 11400000, guid: e608ec686f5d27a46885fff3473d9517,
+    type: 2}
 --- !u!1001 &223668400878055470
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -147,6 +150,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5765535386032145978}
     m_Modifications:
+    - target: {fileID: 967644705913040192, guid: 64a4ae5cdd9a4bf4fa9eea6ec35a6522,
+        type: 3}
+      propertyPath: OnDungeonGenerated
+      value: 
+      objectReference: {fileID: 11400000, guid: 04b01d189153dc240b20856106351a4d,
+        type: 2}
+    - target: {fileID: 967644705913040192, guid: 64a4ae5cdd9a4bf4fa9eea6ec35a6522,
+        type: 3}
+      propertyPath: OnPlayerInstantiated
+      value: 
+      objectReference: {fileID: 11400000, guid: e608ec686f5d27a46885fff3473d9517,
+        type: 2}
     - target: {fileID: 4757776164884817613, guid: 64a4ae5cdd9a4bf4fa9eea6ec35a6522,
         type: 3}
       propertyPath: m_Name
@@ -321,6 +336,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5765535386032145978}
     m_Modifications:
+    - target: {fileID: 7388902483817359504, guid: 4b93b968c7bf60d47bafc1970a67cf83,
+        type: 3}
+      propertyPath: staminaBar
+      value: 
+      objectReference: {fileID: 2981849888056371875, guid: 44452c6be4066684f86d583cd99b8d9f,
+        type: 3}
+    - target: {fileID: 7388902483817359504, guid: 4b93b968c7bf60d47bafc1970a67cf83,
+        type: 3}
+      propertyPath: OnPlayerInstantiated
+      value: 
+      objectReference: {fileID: 11400000, guid: e608ec686f5d27a46885fff3473d9517,
+        type: 2}
     - target: {fileID: 7388902483817359505, guid: 4b93b968c7bf60d47bafc1970a67cf83,
         type: 3}
       propertyPath: m_Name

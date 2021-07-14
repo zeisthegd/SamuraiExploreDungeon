@@ -7,16 +7,23 @@ using UnityEngine;
 [Serializable]
 public class House : MonoBehaviour
 {
-    private List<Room> roomsData = new List<Room>();//data
-    private List<GameObject> rooms = new List<GameObject>();//obj
+    [SerializeField] private List<Room> roomsData = new List<Room>();//data
+    [SerializeField] private List<GameObject> rooms = new List<GameObject>();//obj
 
-    void Start()
+    [SerializeField] GameObject room;
+
+
+    public void SpawnRooms()
     {
-        SpawnRooms();
+        for (int i = 0; i < roomsData.Count; i++)
+        {
+            CreateRoomObj(i);
+        }
     }
-    public void GenerateRoomsData()
+    public void GenerateRoomsInterior()
     {
         GenerateDoorsPosition();
+        //Generate pillars and stuff
     }
 
     private void GenerateDoorsPosition()
@@ -31,25 +38,15 @@ public class House : MonoBehaviour
     {
         roomsData.Add(room);
     }
-
-    private void SpawnRooms()
-    {
-        for (int i = 0; i < roomsData.Count; i++)
-        {
-            CreateRoomObj(i);
-        }
-    }
-
     private void CreateRoomObj(int i)
     {
-        GameObject roomObj = new GameObject();
+        var roomObj = Instantiate(room,transform.position,Quaternion.identity,this.transform);
+        roomObj.name = $"Room {i}";
+        roomObj.isStatic = true;
         rooms.Add(roomObj);
-        var roomScript = roomObj.AddComponent<Room>();
+        var roomScript = roomObj.GetComponent<Room>();
         Room.Copy(roomsData[i], roomScript);
 
-        roomObj.name = $"Room[{i}]";
-        roomObj.isStatic = true;
-        roomObj.transform.parent = this.transform;
     }
 
     public List<Room> RoomsData { get => roomsData; set => roomsData = value; }

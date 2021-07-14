@@ -11,8 +11,8 @@ public class MovementController : MonoBehaviour
     private Rigidbody rgBody;
     private PlayerStat playerStat;
 
-    [SerializeField] float dashPowerThreshold;
     [SerializeField] MovementSettings settings;
+    [SerializeField] float dashPowerThreshold;
 
     float horInp = 0;
     float vertInp = 0;
@@ -22,7 +22,7 @@ public class MovementController : MonoBehaviour
     {
         objectTrf = GetComponent<Transform>();
         rgBody = GetComponent<Rigidbody>();
-        playerStat = GetComponent<PlayerStat>();
+        playerStat = GetComponentInParent<Player>().Stats;
 
         settings.camera = Camera.main;
     }
@@ -99,16 +99,12 @@ public class MovementController : MonoBehaviour
     private void AddStamina()
     {
         playerStat.CurrentStamina += (settings.staminaDepletionRate * Time.unscaledDeltaTime);
-        OnStaminaChanged?.Invoke(playerStat.CurrentStamina);
     }
 
     private void SubtractStamina()
     {
         playerStat.CurrentStamina -= (settings.staminaDepletionRate * Time.unscaledDeltaTime);
-        OnStaminaChanged?.Invoke(playerStat.CurrentStamina);
     }
-    public System.Action<float> OnStaminaChanged;
-
     public System.Action UnableToDash;
 
     public float RemainingStaminaPercent()

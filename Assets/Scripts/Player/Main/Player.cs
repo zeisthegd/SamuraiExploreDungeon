@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
 {
     [SerializeField] TimeManager timeManager;
     [SerializeField] Sword sword;
+    [SerializeField] PlayerStat stats;
+
     Rigidbody rgBody;
     Animator animator;
     MovementController movementController;
@@ -52,11 +54,16 @@ public class Player : MonoBehaviour
         timeManager = FindObjectOfType<TimeManager>();
     }
 
+    void OnCollisionEnter(Collision other)
+    {
+
+    }
 
     public Rigidbody RigidBody { get => rgBody; }
     public Animator Animator { get => animator; }
     public MovementController MovementController { get => movementController; }
     public TimeManager TimeManager { get => timeManager; }
-    public PlayerStateMachine StateMachine { get => stateMachine;}
-    public Sword Sword { get => sword;}
+    public PlayerStateMachine StateMachine { get => stateMachine; }
+    public Sword Sword { get => sword; }
+    public PlayerStat Stats { get => stats; }
 }

@@ -10,29 +10,88 @@ public class Room : MonoBehaviour
     bool playerEnter = false;
     List<Cell> cells = new List<Cell>();
     List<GameObject> cellObjs;
-
     Vector2 topLeft, bottomRight;
 
+    Maze maze;
     DungeonTheme theme;
     GenerationSettings settings;
-    Maze maze;
+    
+    [Header("EventChannel")]
+    [SerializeField] StringEventChannelSO OnPlayerEnterRoom;
 
+    void Awake()
+    {
+        GetSettingsUtil.GetDungThemeAndGenSettings(ref theme, ref settings);
+    }
     void Start()
     {
-        GetSettingsUtil.GetDungThemeAndGenSettings(ref settings, ref theme);
         SpawnCells();
         SpawnPlayerDetectionBox();
         InstantiateSpawners();
     }
-
-
-
 
     public Room(Maze maze, GenerationSettings settings)
     {
         this.maze = maze;
         this.settings = settings;
     }
+
+    #region Room Building
+    private void SpawnCells()
+    {
+        cellObjs = new List<GameObject>();
+        foreach (Cell cell in cells)
+        {
+            Vector2 cPos = new Vector2(cell.Position.x, cell.Position.y);
+            Vector3 spawnPos = new Vector3((cPos.x * settings.CellPositionOffset), 0, (cPos.y * settings.CellPositionOffset));
+            var cellObj = Instantiate(theme.Cell, spawnPos, Quaternion.identity, this.transform);
+
+            cellObj.GetComponent<Cell>().CopyCellValue(cell);
+            cellObj.name = $"Cell[{cPos.x},{cPos.y}]";
+
+            cellObjs.Add(cellObj);
+        }
+    }
+
+    private void SpawnPlayerDetectionBox()
+    {
+        var detBox = gameObject.AddComponent<BoxCollider>();
+        var centerOfRoom = GetCenterOfRoom();
+        float sizeX = (bottomRight.x - topLeft.x) * settings.CellPositionOffset + 4F;
+        float sizeY = (bottomRight.y - topLeft.y) * settings.CellPositionOffset + 4F;
+
+        detBox.center = centerOfRoom;
+        detBox.size = new Vector3(sizeX, 2F, sizeY);
+        detBox.isTrigger = true;
+    }
+
+    private void InstantiateSpawners()
+    {
+        Instantiate(theme.MonsterSpawner, transform.position, Quaternion.identity, this.transform);
+    }
+
+    public Vector3 GetCenterOfRoom()
+    {
+        Vector3 sumVector = new Vector3(0f, 0f, 0f);
+        foreach (Transform child in this.transform)
+        {
+            sumVector += child.position;
+        }
+
+        Vector3 groupCenter = sumVector / cellObjs.Count;
+        return groupCenter;
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (playerEnter == false)
+        {
+            OnPlayerEnterRoom.RaiseEvent(this.name);
+            playerEnter = true;
+        }
+    }
+
+
+    #endregion
 
     #region Data Processing
     public bool TryCreateRoom()
@@ -133,65 +192,6 @@ public class Room : MonoBehaviour
 
     #endregion
 
-    #region Room Building
-    private void SpawnCells()
-    {
-        cellObjs = new List<GameObject>();
-        foreach (Cell cell in cells)
-        {
-            Vector2 cPos = new Vector2(cell.Position.x, cell.Position.y);
-            Vector3 spawnPos = new Vector3((cPos.x * settings.CellPositionOffset), 0, (cPos.y * settings.CellPositionOffset));
-            var cellObj = Instantiate(theme.Cell, spawnPos, Quaternion.identity, this.transform);
-
-            cellObj.GetComponent<Cell>().CopyCellValue(cell);
-            cellObj.name = $"Cell[{cPos.x},{cPos.y}]";
-
-            cellObjs.Add(cellObj);
-        }
-    }
-
-    private void SpawnPlayerDetectionBox()
-    {
-        var detBox = gameObject.AddComponent<BoxCollider>();
-        var centerOfRoom = GetCenterOfRoom();
-        float sizeX = (bottomRight.x - topLeft.x) * settings.CellPositionOffset + 4F;
-        float sizeY = (bottomRight.y - topLeft.y) * settings.CellPositionOffset + 4F;
-
-        detBox.center = centerOfRoom;
-        detBox.size = new Vector3(sizeX, 2F, sizeY);
-        detBox.isTrigger = true;
-    }
-
-    private void InstantiateSpawners()
-    {
-        Instantiate(theme.MonsterSpawner, transform.position, Quaternion.identity, this.transform);
-    }
-
-    public Vector3 GetCenterOfRoom()
-    {
-        Vector3 sumVector = new Vector3(0f, 0f, 0f);
-        foreach (Transform child in this.transform)
-        {
-            sumVector += child.position;
-        }
-
-        Vector3 groupCenter = sumVector / cellObjs.Count;
-        return groupCenter;
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (playerEnter == false)
-        {
-            OnPlayerEnterRoom?.Invoke();
-            playerEnter = true;
-        }
-    }
-
-
-    #endregion
-
-    public event System.Action OnPlayerEnterRoom;
 
 
     public List<Cell> Cells { get => cells; set => cells = value; }

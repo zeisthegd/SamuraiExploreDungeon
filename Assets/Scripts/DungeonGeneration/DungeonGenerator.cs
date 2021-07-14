@@ -4,42 +4,44 @@ using UnityEngine;
 
 public class DungeonGenerator : MonoBehaviour
 {
+    [Header("Dungeon")]
+    [SerializeField] bool toGenerate = false;
+    [SerializeField] Maze maze;
     [SerializeField] DungeonTheme theme;
     [SerializeField] GenerationSettings settings;
-    [SerializeField] bool toGenerate = false;
-    [SerializeField] float positionOffset;
+    [SerializeField] WaitForSeconds waitTime = new WaitForSeconds (1f);
+    [Header("Event Channels")]
+    [SerializeField] VoidEventChannelSO OnDungeonGenerated;
 
-    private House house;// Manage Rooms
+    Maze mainMaze;
 
-
-    void Awake()
-    {
-
-    }
     void Start()
     {
-        GenerateDungeon();
+        StartCoroutine(GenerateDungeon());
     }
 
-    private void GenerateDungeon()
+    [ContextMenu("Generate Dungeon")]
+    IEnumerator GenerateDungeon()
     {
         if (toGenerate)
         {
-            SpawnMaze();
-        }
+            StartCoroutine(DeleteAllMaze());
+            mainMaze = Instantiate(maze, transform.position, Quaternion.identity, this.transform);
+            mainMaze.CreateNewDungeon();
+            yield return new WaitForSeconds(10);
+            OnDungeonGenerated.RaiseEvent();
+        }     
     }
 
-    private void SpawnMaze()
+    IEnumerator DeleteAllMaze()
     {
-        if (!GameObject.Find("Maze"))
+        var mazes = FindObjectsOfType<Maze>();
+        if (mazes.Length > 0)
         {
-            GameObject maze = new GameObject();
-            maze.isStatic = true;
-            maze.AddComponent<Maze>();
-            maze.GetComponent<Maze>().Settings = this.settings;
-            maze.name = "Maze";
-            maze.transform.parent = this.transform;
+            foreach (Maze maze in mazes)
+                Destroy(maze.gameObject);
         }
+        yield return waitTime;
     }
 
     public GenerationSettings Settings { get => settings; set => settings = value; }

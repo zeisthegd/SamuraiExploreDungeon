@@ -43,8 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99ead57cba93bfa4bbfae45218b30fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentWaveCount: 1
   monsterSpawnSettings:
     greaterMonsterNumber: 3
     lesserMonsterNumber: 3
     numberOfWaves: 2
+  OnPlayerEnterRoom: {fileID: 11400000, guid: 3faa7df994175ce43b2f4831b490d862, type: 2}

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 941081090}
   m_Layer: 9
   m_Name: BigPynk
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -62,7 +62,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!1001 &5878056411890468530
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -169,6 +169,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8d04354a26254584d8bb51b9c8aae196,
+        type: 3}
+      propertyPath: m_TagString
+      value: Monster
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d04354a26254584d8bb51b9c8aae196, type: 3}

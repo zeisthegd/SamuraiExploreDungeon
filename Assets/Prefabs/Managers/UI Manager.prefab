@@ -44,6 +44,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryUI: {fileID: 0}
+  playingUI: {fileID: 4286269849063779308, guid: ce16eaaeee4883b48a74633257eaf37c,
+    type: 3}
   pauseMenu: {fileID: 0}
   debugMenu: {fileID: 4235869551676867973, guid: 0795d4dccd682d047a8a7057ac6ee891,
     type: 3}
+  staminaBar: {fileID: 0}
+  OnPlayerInstantiated: {fileID: 0}
