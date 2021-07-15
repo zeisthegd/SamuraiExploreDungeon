@@ -18,6 +18,4 @@ MonoBehaviour:
   MaxRooms: 3
   MinRoomSize: {x: 3, y: 3}
   MaxRoomSize: {x: 5, y: 5}
-  RoomBorderLeniancy: 3
-  RoomBorderRetries: 10
-  CellPositionOffset: 4.75
+  CellPositionOffset: 5.5

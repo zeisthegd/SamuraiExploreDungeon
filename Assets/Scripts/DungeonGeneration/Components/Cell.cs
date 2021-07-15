@@ -77,12 +77,9 @@ public class Cell : MonoBehaviour
     {
         if (isDoor && availWalls[direction] == true)
         {
-            var doorDir = transform.Find(Directions[direction]);
-            //Instantiate(door, doorDir);
-
-            door.transform.position = Vector3.zero;
-            door.transform.rotation = Quaternion.Euler(0, 0, 0);
             DestroyWall(direction);
+            var doorDir = transform.Find(Directions[direction]);
+            var newDoor = Instantiate(door, doorDir);   
         }
     }
 
@@ -137,9 +134,9 @@ public class Cell : MonoBehaviour
 
     public bool IsSearched()
     {
-        foreach(bool direction in AvailWalls)
+        foreach (bool direction in AvailWalls)
         {
-            if(direction == false)
+            if (direction == false)
                 return true;
         }
         return false;

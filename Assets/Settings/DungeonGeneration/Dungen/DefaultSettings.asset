@@ -18,4 +18,4 @@ MonoBehaviour:
   MaxRooms: 8
   MinRoomSize: {x: 4, y: 4}
   MaxRoomSize: {x: 8, y: 8}
-  CellPositionOffset: 4.75
+  CellPositionOffset: 5.5
