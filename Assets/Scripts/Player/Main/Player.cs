@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
 
     Rigidbody rgBody;
     Animator animator;
-    MovementController movementController;
+    PlayerMovementController movementController;
     PlayerStateMachine stateMachine;
 
     void Awake()
@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
     private void GetComponents()
     {
         rgBody = GetComponent<Rigidbody>();
-        movementController = GetComponent<MovementController>();
+        movementController = GetComponent<PlayerMovementController>();
         animator = transform.GetChild(0).GetComponent<Animator>();
     }
 
@@ -56,12 +56,12 @@ public class Player : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
-
+        Debug.Log(other.collider.gameObject.name);
     }
 
     public Rigidbody RigidBody { get => rgBody; }
     public Animator Animator { get => animator; }
-    public MovementController MovementController { get => movementController; }
+    public PlayerMovementController MovementController { get => movementController; }
     public TimeManager TimeManager { get => timeManager; }
     public PlayerStateMachine StateMachine { get => stateMachine; }
     public Sword Sword { get => sword; }

@@ -5,7 +5,7 @@ using UnityEngine;
 using DG.Tweening;
 
 [Serializable]
-public class MovementController : MonoBehaviour
+public class PlayerMovementController : MonoBehaviour
 {
     private Transform objectTrf;
     private Rigidbody rgBody;
@@ -35,7 +35,7 @@ public class MovementController : MonoBehaviour
 
         if (moveDirection.magnitude != 0)
         {
-            RotateDirection45Deg(ref moveDirection);
+            RotateModel(ref moveDirection);
             moveDirection.Normalize();
             rgBody.AddForce(moveDirection * settings.moveSpeed * Time.deltaTime, ForceMode.Impulse);
         }
@@ -59,13 +59,13 @@ public class MovementController : MonoBehaviour
         dashSpeed = 0;
     }
 
-    private void RotateDirection45Deg(ref Vector3 direction)
+    private void RotateModel(ref Vector3 direction)
     {
         if (direction.magnitude >= 0.01f)
         {
             float rotateOffset = 45F * Mathf.Deg2Rad;
             float horAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + settings.camera.transform.eulerAngles.y;
-
+            transform.rotation = Quaternion.Euler(0, horAngle, 0);
             direction = Quaternion.Euler(0F, horAngle - rotateOffset, 0F) * Vector3.forward;
         }
     }

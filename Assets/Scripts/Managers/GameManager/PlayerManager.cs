@@ -28,7 +28,6 @@ public class PlayerManager : MonoBehaviour
         {
             LoadPlayerData();
             InstantiatePlayer();
-            MakeCameraFollowPlayer();
         }
     }
 
@@ -42,13 +41,6 @@ public class PlayerManager : MonoBehaviour
     private void LoadPlayerData()
     {
 
-    }
-
-    private void MakeCameraFollowPlayer()
-    {
-        var virtualCamera = FindObjectOfType<Cinemachine.CinemachineVirtualCamera>();
-        virtualCamera.Follow = FindObjectOfType<Player>().transform;
-        virtualCamera.LookAt = FindObjectOfType<Player>().transform;
     }
 
 

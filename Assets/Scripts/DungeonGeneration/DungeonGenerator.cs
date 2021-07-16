@@ -28,7 +28,7 @@ public class DungeonGenerator : MonoBehaviour
             StartCoroutine(DeleteAllMaze());
             mainMaze = Instantiate(maze, transform.position, Quaternion.identity, this.transform);
             mainMaze.CreateNewDungeon();
-            yield return new WaitForSeconds(10);
+            yield return new WaitForSeconds(1);
             OnDungeonGenerated.RaiseEvent();
         }     
     }

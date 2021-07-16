@@ -8,7 +8,7 @@ public abstract class PlayerState : State
     protected PlayerStateMachine stateMachine;
     protected Animator animator;
     protected PlayerAnimationHandler animationHandler;
-    protected MovementController movementController;
+    protected PlayerMovementController movementController;
 
     public PlayerState(Player player, PlayerStateMachine stateMachine)
     {

@@ -20,12 +20,15 @@ public class Monster : MonoBehaviour
     void FixedUpdate()
     {
         ChasePlayer();
+
     }
     void ChasePlayer()
     {
         playerPos = FindObjectOfType<Player>().transform.position;
         var dirToPlayer = (playerPos - this.transform.position).normalized;
-        rgBody.AddForce(dirToPlayer * 5 * Time.deltaTime, ForceMode.Impulse);
+        rgBody.AddForce(dirToPlayer * 50 * Time.deltaTime, ForceMode.Impulse);
     }
+
+    
 
 }
