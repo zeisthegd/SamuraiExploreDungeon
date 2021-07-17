@@ -37,7 +37,7 @@ public class ChargeAndDashState : PlayerState
     {
         base.Exit();
         player.Sword.SpeedUpChargeEffect();
-        timeManager.EndSlowMotion();     
+        timeManager.EndSlowMotion();
         animationHandler.SetCharge(false);
     }
 

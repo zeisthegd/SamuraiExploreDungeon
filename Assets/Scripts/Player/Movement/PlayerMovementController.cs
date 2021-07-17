@@ -13,7 +13,8 @@ public class PlayerMovementController : MonoBehaviour
 
     [SerializeField] MovementSettings settings;
     [SerializeField] float dashPowerThreshold;
-
+    [SerializeField] float smoothTime;
+    float smoothVelocity;
     float horInp = 0;
     float vertInp = 0;
     float dashSpeed = 0;
@@ -65,7 +66,8 @@ public class PlayerMovementController : MonoBehaviour
         {
             float rotateOffset = 45F * Mathf.Deg2Rad;
             float horAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + settings.camera.transform.eulerAngles.y;
-            transform.rotation = Quaternion.Euler(0, horAngle, 0);
+            float smoothedAngle = Mathf.SmoothDampAngle(transform.eulerAngles.y, horAngle, ref smoothVelocity, smoothTime);
+            transform.rotation = Quaternion.Euler(0, smoothedAngle, 0);
             direction = Quaternion.Euler(0F, horAngle - rotateOffset, 0F) * Vector3.forward;
         }
     }
