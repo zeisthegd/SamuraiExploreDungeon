@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     [SerializeField] TimeManager timeManager;
     [SerializeField] Sword sword;
     [SerializeField] PlayerStat stats;
+    [SerializeField] InputReader inputReader;
 
     Rigidbody rgBody;
     Animator animator;
@@ -56,7 +57,7 @@ public class Player : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
-        Debug.Log(other.collider.gameObject.name);
+
     }
 
     public Rigidbody RigidBody { get => rgBody; }
@@ -66,4 +67,5 @@ public class Player : MonoBehaviour
     public PlayerStateMachine StateMachine { get => stateMachine; }
     public Sword Sword { get => sword; }
     public PlayerStat Stats { get => stats; }
+    public InputReader InputReader { get => inputReader; set => inputReader = value;}
 }

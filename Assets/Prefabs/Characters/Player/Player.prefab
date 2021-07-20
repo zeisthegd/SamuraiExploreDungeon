@@ -31,7 +31,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 8930975846598040978}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &168301456
 MeshFilter:
@@ -203,7 +203,7 @@ Transform:
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 8930975846598040978}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4246976239358736114
 MeshFilter:
@@ -267,99 +267,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 10, y: 2.220446e-16, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &8660995562358829205
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8119656306291811280}
-  - component: {fileID: 7124216920387304477}
-  m_Layer: 0
-  m_Name: Spot Light
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8119656306291811280
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8660995562358829205}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 7.14, z: -0.00000047683716}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 8930975846598040978}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!108 &7124216920387304477
-Light:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8660995562358829205}
-  m_Enabled: 1
-  serializedVersion: 10
-  m_Type: 0
-  m_Shape: 0
-  m_Color: {r: 0.9716981, g: 0.7739181, b: 0.5179334, a: 1}
-  m_Intensity: 36.4
-  m_Range: 25
-  m_SpotAngle: 100
-  m_InnerSpotAngle: 90
-  m_CookieSize: 10
-  m_Shadows:
-    m_Type: 0
-    m_Resolution: -1
-    m_CustomResolution: -1
-    m_Strength: 1
-    m_Bias: 0.05
-    m_NormalBias: 0.4
-    m_NearPlane: 0.2
-    m_CullingMatrixOverride:
-      e00: 1
-      e01: 0
-      e02: 0
-      e03: 0
-      e10: 0
-      e11: 1
-      e12: 0
-      e13: 0
-      e20: 0
-      e21: 0
-      e22: 1
-      e23: 0
-      e30: 0
-      e31: 0
-      e32: 0
-      e33: 1
-    m_UseCullingMatrixOverride: 0
-  m_Cookie: {fileID: 0}
-  m_DrawHalo: 0
-  m_Flare: {fileID: 0}
-  m_RenderMode: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingLayerMask: 1
-  m_Lightmapping: 4
-  m_LightShadowCasterMode: 0
-  m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
-  m_ColorTemperature: 6570
-  m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
-  m_UseBoundingSphereOverride: 0
-  m_UseViewFrustumForShadowCasterCull: 1
-  m_ShadowRadius: 0
-  m_ShadowAngle: 0
 --- !u!1 &8930975846598040979
 GameObject:
   m_ObjectHideFlags: 0
@@ -371,7 +278,7 @@ GameObject:
   - component: {fileID: 8930975846598040978}
   - component: {fileID: 8930975846598040991}
   - component: {fileID: 8930975846598040976}
-  - component: {fileID: 994068663429247967}
+  - component: {fileID: 1353904342}
   m_Layer: 11
   m_Name: Player
   m_TagString: Player
@@ -391,9 +298,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5432740542552476902}
-  - {fileID: 72166258}
   - {fileID: 6758541983661219591}
-  - {fileID: 8119656306291811280}
   - {fileID: 168301453}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -429,7 +334,8 @@ MonoBehaviour:
   timeManager: {fileID: 0}
   sword: {fileID: 2844473744353309516}
   stats: {fileID: 11400000, guid: a6cd8c1dacdd2204dacdbc501d0cb66d, type: 2}
---- !u!114 &994068663429247967
+  inputReader: {fileID: 11400000, guid: 170b07859ef25584d87b4fd417be43f4, type: 2}
+--- !u!114 &1353904342
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -438,318 +344,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 8930975846598040979}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0824384f4575ea64bb66f2803ea21c44, type: 3}
+  m_Script: {fileID: 11500000, guid: c1dd7bb58a3b6c4418d852e0fc393824, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  settings: {fileID: 11400000, guid: d0d384421e91ca64180a65bb89fcd607, type: 2}
-  dashPowerThreshold: 20
---- !u!1001 &72036852
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 8930975846598040978}
-    m_Modifications:
-    - target: {fileID: 100000, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 100002, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 100004, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 100006, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: m_Name
-      value: 360 LOS Source High Precision
-      objectReference: {fileID: 0}
-    - target: {fileID: 100006, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 100008, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 100010, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 100012, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 400006, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 400006, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400006, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 400006, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400006, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 400006, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400006, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400006, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400006, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400006, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400006, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2000000, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: field of view
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 2000000, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: far clip plane
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 2000000, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: m_TargetTexture
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2000000, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: near clip plane
-      value: 0.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 2000000, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: m_CullingMask.m_Bits
-      value: 1367
-      objectReference: {fileID: 0}
-    - target: {fileID: 2000002, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: field of view
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 2000002, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: far clip plane
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 2000002, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: m_TargetTexture
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2000002, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: near clip plane
-      value: 0.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 2000002, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: m_CullingMask.m_Bits
-      value: 1367
-      objectReference: {fileID: 0}
-    - target: {fileID: 2000004, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: field of view
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 2000004, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: far clip plane
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 2000004, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: m_TargetTexture
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2000004, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: near clip plane
-      value: 0.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 2000004, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: m_CullingMask.m_Bits
-      value: 1367
-      objectReference: {fileID: 0}
-    - target: {fileID: 2000006, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: field of view
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 2000006, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: far clip plane
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 2000006, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: m_TargetTexture
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2000006, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: near clip plane
-      value: 0.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 2000006, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: m_CullingMask.m_Bits
-      value: 1367
-      objectReference: {fileID: 0}
-    - target: {fileID: 2000008, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: field of view
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 2000008, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: far clip plane
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 2000008, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: m_TargetTexture
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2000008, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: near clip plane
-      value: 0.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 2000008, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: m_CullingMask.m_Bits
-      value: 1367
-      objectReference: {fileID: 0}
-    - target: {fileID: 2000010, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: field of view
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 2000010, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: far clip plane
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 2000010, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: m_TargetTexture
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2000010, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: near clip plane
-      value: 0.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 2000010, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: m_CullingMask.m_Bits
-      value: 1367
-      objectReference: {fileID: 0}
-    - target: {fileID: 11400000, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: m_MaskColor.b
-      value: 0.7164471
-      objectReference: {fileID: 0}
-    - target: {fileID: 11400000, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: m_MaskColor.g
-      value: 0.8075165
-      objectReference: {fileID: 0}
-    - target: {fileID: 11400000, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: m_MaskColor.r
-      value: 0.8679245
-      objectReference: {fileID: 0}
-    - target: {fileID: 11400000, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: m_DistanceFade
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 11400002, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: m_MaskColor.b
-      value: 0.7164471
-      objectReference: {fileID: 0}
-    - target: {fileID: 11400002, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: m_MaskColor.g
-      value: 0.8075165
-      objectReference: {fileID: 0}
-    - target: {fileID: 11400002, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: m_MaskColor.r
-      value: 0.8679245
-      objectReference: {fileID: 0}
-    - target: {fileID: 11400002, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: m_DistanceFade
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 11400004, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: m_MaskColor.b
-      value: 0.7164471
-      objectReference: {fileID: 0}
-    - target: {fileID: 11400004, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: m_MaskColor.g
-      value: 0.8075165
-      objectReference: {fileID: 0}
-    - target: {fileID: 11400004, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: m_MaskColor.r
-      value: 0.8679245
-      objectReference: {fileID: 0}
-    - target: {fileID: 11400004, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: m_DistanceFade
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 11400006, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: m_MaskColor.b
-      value: 0.7164471
-      objectReference: {fileID: 0}
-    - target: {fileID: 11400006, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: m_MaskColor.g
-      value: 0.8075165
-      objectReference: {fileID: 0}
-    - target: {fileID: 11400006, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: m_MaskColor.r
-      value: 0.8679245
-      objectReference: {fileID: 0}
-    - target: {fileID: 11400006, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: m_DistanceFade
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 11400008, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: m_MaskColor.b
-      value: 0.7164471
-      objectReference: {fileID: 0}
-    - target: {fileID: 11400008, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: m_MaskColor.g
-      value: 0.8075165
-      objectReference: {fileID: 0}
-    - target: {fileID: 11400008, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: m_MaskColor.r
-      value: 0.8679245
-      objectReference: {fileID: 0}
-    - target: {fileID: 11400008, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: m_DistanceFade
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 11400010, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: m_MaskColor.b
-      value: 0.7164471
-      objectReference: {fileID: 0}
-    - target: {fileID: 11400010, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: m_MaskColor.g
-      value: 0.8075165
-      objectReference: {fileID: 0}
-    - target: {fileID: 11400010, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: m_MaskColor.r
-      value: 0.8679245
-      objectReference: {fileID: 0}
-    - target: {fileID: 11400010, guid: 6070b1377c2920547be98efb1187179c, type: 3}
-      propertyPath: m_DistanceFade
-      value: 0.5
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 6070b1377c2920547be98efb1187179c, type: 3}
---- !u!4 &72166258 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400006, guid: 6070b1377c2920547be98efb1187179c,
-    type: 3}
-  m_PrefabInstance: {fileID: 72036852}
-  m_PrefabAsset: {fileID: 0}
+  settings: {fileID: 11400000, guid: 89a6bea51f3f9d542abe2479105183f0, type: 2}
+  inputReader: {fileID: 11400000, guid: 170b07859ef25584d87b4fd417be43f4, type: 2}
+  dashPowerThreshold: 5
+  smoothTime: 0.15
 --- !u!1001 &5543440484984777485
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1890,9 +1491,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4cb7bf18ac8fc374aadba560198f2218, type: 3}
---- !u!4 &2169574275551709317 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -3245510320275545208, guid: 4cb7bf18ac8fc374aadba560198f2218,
+--- !u!1 &4624959399184848476 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4cb7bf18ac8fc374aadba560198f2218,
     type: 3}
   m_PrefabInstance: {fileID: 5543440484984777485}
   m_PrefabAsset: {fileID: 0}
@@ -1902,9 +1503,9 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5543440484984777485}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &4624959399184848476 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4cb7bf18ac8fc374aadba560198f2218,
+--- !u!4 &2169574275551709317 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -3245510320275545208, guid: 4cb7bf18ac8fc374aadba560198f2218,
     type: 3}
   m_PrefabInstance: {fileID: 5543440484984777485}
   m_PrefabAsset: {fileID: 0}
@@ -1982,6 +1583,12 @@ PrefabInstance:
       objectReference: {fileID: 7201618623417793769}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9292683208a794c48a29f2844f428e6e, type: 3}
+--- !u!4 &7930139513445784284 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4449561830193694264, guid: 9292683208a794c48a29f2844f428e6e,
+    type: 3}
+  m_PrefabInstance: {fileID: 6038631349037604068}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2844473744353309516 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8409380467760312232, guid: 9292683208a794c48a29f2844f428e6e,
@@ -1994,12 +1601,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c25caea435cdaa4cace953a1cf547b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &7930139513445784284 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4449561830193694264, guid: 9292683208a794c48a29f2844f428e6e,
-    type: 3}
-  m_PrefabInstance: {fileID: 6038631349037604068}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7201618623417793769 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3475880391083761677, guid: 9292683208a794c48a29f2844f428e6e,

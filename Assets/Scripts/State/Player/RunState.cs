@@ -6,7 +6,14 @@ public class RunState : PlayerState
 {
     public RunState(Player player, PlayerStateMachine stateMachine) : base(player, stateMachine)
     {
+        player.InputReader.chargeBegin += stateMachine.ChangeStateToCharge;
     }
+    public override void Enter()
+    {
+        base.Enter();
+        animationHandler.SetRunnning(true);
+    }
+
 
     public override void FixedUpdate()
     {
@@ -25,13 +32,6 @@ public class RunState : PlayerState
     {
         if (!movementController.HasRunInput)
             stateMachine.ChangeStateToIdle();
-        if (Input.GetButton("Charge"))
-            stateMachine.ChangeStateToCharge();
-    }
-    public override void Enter()
-    {
-        base.Enter();
-        animationHandler.SetRunnning(true);
     }
 
     public override void Exit()
@@ -39,7 +39,6 @@ public class RunState : PlayerState
         base.Exit();
         animationHandler.SetRunnning(false);
     }
-
 
     public override string ToString()
     {

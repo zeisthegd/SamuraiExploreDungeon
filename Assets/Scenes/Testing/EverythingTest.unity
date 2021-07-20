@@ -409,13 +409,77 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 88347512, guid: a1a1d9408decbf843bd2cd00593535b0, type: 3}
+      propertyPath: m_Lens.FarClipPlane
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 88347512, guid: a1a1d9408decbf843bd2cd00593535b0, type: 3}
+      propertyPath: m_Lens.NearClipPlane
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 88347512, guid: a1a1d9408decbf843bd2cd00593535b0, type: 3}
+      propertyPath: m_Orbits.Array.data[0].m_Radius
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 88347512, guid: a1a1d9408decbf843bd2cd00593535b0, type: 3}
+      propertyPath: m_Orbits.Array.data[1].m_Radius
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 88347512, guid: a1a1d9408decbf843bd2cd00593535b0, type: 3}
+      propertyPath: m_Orbits.Array.data[2].m_Radius
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 397361844, guid: a1a1d9408decbf843bd2cd00593535b0, type: 3}
+      propertyPath: m_Lens.FarClipPlane
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 397361844, guid: a1a1d9408decbf843bd2cd00593535b0, type: 3}
+      propertyPath: m_Lens.NearClipPlane
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 653985751, guid: a1a1d9408decbf843bd2cd00593535b0, type: 3}
+      propertyPath: m_Lens.FarClipPlane
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 653985751, guid: a1a1d9408decbf843bd2cd00593535b0, type: 3}
+      propertyPath: m_Lens.NearClipPlane
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 713127272, guid: a1a1d9408decbf843bd2cd00593535b0, type: 3}
+      propertyPath: m_Damping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 713127272, guid: a1a1d9408decbf843bd2cd00593535b0, type: 3}
+      propertyPath: m_IgnoreTag
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 713127272, guid: a1a1d9408decbf843bd2cd00593535b0, type: 3}
+      propertyPath: m_MaximumEffort
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 713127272, guid: a1a1d9408decbf843bd2cd00593535b0, type: 3}
+      propertyPath: m_SmoothingTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 713127272, guid: a1a1d9408decbf843bd2cd00593535b0, type: 3}
+      propertyPath: m_DampingWhenOccluded
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 713127272, guid: a1a1d9408decbf843bd2cd00593535b0, type: 3}
+      propertyPath: m_CollideAgainst.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 713127272, guid: a1a1d9408decbf843bd2cd00593535b0, type: 3}
+      propertyPath: m_TransparentLayers.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 827028919, guid: a1a1d9408decbf843bd2cd00593535b0, type: 3}
       propertyPath: m_FollowOffset.y
       value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 827028919, guid: a1a1d9408decbf843bd2cd00593535b0, type: 3}
       propertyPath: m_FollowOffset.z
-      value: -6
+      value: -8
       objectReference: {fileID: 0}
     - target: {fileID: 841348648, guid: a1a1d9408decbf843bd2cd00593535b0, type: 3}
       propertyPath: m_FollowOffset.y
@@ -423,7 +487,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 841348648, guid: a1a1d9408decbf843bd2cd00593535b0, type: 3}
       propertyPath: m_FollowOffset.z
-      value: -6
+      value: -8
+      objectReference: {fileID: 0}
+    - target: {fileID: 964854894, guid: a1a1d9408decbf843bd2cd00593535b0, type: 3}
+      propertyPath: m_Lens.FarClipPlane
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 964854894, guid: a1a1d9408decbf843bd2cd00593535b0, type: 3}
+      propertyPath: m_Lens.NearClipPlane
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1366938356, guid: a1a1d9408decbf843bd2cd00593535b0, type: 3}
       propertyPath: m_FollowOffset.y
@@ -431,7 +503,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1366938356, guid: a1a1d9408decbf843bd2cd00593535b0, type: 3}
       propertyPath: m_FollowOffset.z
-      value: -6
+      value: -8
       objectReference: {fileID: 0}
     - target: {fileID: 6191198426261945904, guid: a1a1d9408decbf843bd2cd00593535b0,
         type: 3}
@@ -492,6 +564,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cameras
+      objectReference: {fileID: 0}
+    - target: {fileID: 6191198427512929341, guid: a1a1d9408decbf843bd2cd00593535b0,
+        type: 3}
+      propertyPath: far clip plane
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6191198427512929341, guid: a1a1d9408decbf843bd2cd00593535b0,
+        type: 3}
+      propertyPath: near clip plane
+      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1a1d9408decbf843bd2cd00593535b0, type: 3}

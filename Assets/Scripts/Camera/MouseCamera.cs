@@ -6,7 +6,7 @@ public class MouseCamera : MonoBehaviour
 {
     Transform playerBody;
     [SerializeField]
-    MovementSettings settings;
+    MovementSettingsSO settings;
     [SerializeField]
     LayerMask hitMask;
     Vector3 worldMousePosition;

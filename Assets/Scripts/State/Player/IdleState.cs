@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class IdleState : PlayerState
 {
-    public IdleState(Player player, PlayerStateMachine stateMachine) : base(player,stateMachine)
+    public IdleState(Player player, PlayerStateMachine stateMachine) : base(player, stateMachine)
     {
+        player.InputReader.chargeBegin += stateMachine.ChangeStateToCharge;
     }
-
-    public override void FixedUpdate()
+    public override void Enter()
     {
-        base.FixedUpdate();
+        base.Enter();
     }
 
     public override void Update()
@@ -18,24 +18,22 @@ public class IdleState : PlayerState
         base.Update();
         StateChangeLogic();
     }
-    public override void Enter()
+
+    public override void FixedUpdate()
     {
-        base.Enter();
+        base.FixedUpdate();
     }
 
     public override void Exit()
     {
         base.Exit();
     }
+    
     public override void StateChangeLogic()
     {
-        if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
+        if (movementController.HasRunInput)
         {
             stateMachine.ChangeStateToRun();
-        }
-        if (Input.GetButton("Charge"))
-        {
-            stateMachine.ChangeStateToCharge();
         }
     }
 

@@ -17,7 +17,7 @@ public class PlayerStateMachine : StateMachine
         idleState = new IdleState(player, this);
         runState = new RunState(player, this);
         slashState = new SlashState(player, this);
-        chargeState = new ChargeAndDashState(player, this);
+        chargeState = new ChargeState(player, this);
         dashState = new DashState(player, this);
     }
 

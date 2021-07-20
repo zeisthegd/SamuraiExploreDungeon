@@ -26,7 +26,7 @@ public class Monster : MonoBehaviour
     {
         playerPos = FindObjectOfType<Player>().transform.position;
         var dirToPlayer = (playerPos - this.transform.position).normalized;
-        rgBody.AddForce(dirToPlayer * 50 * Time.deltaTime, ForceMode.Impulse);
+        rgBody.AddForce(dirToPlayer * 25 * Time.deltaTime, ForceMode.Impulse);
     }
 
     

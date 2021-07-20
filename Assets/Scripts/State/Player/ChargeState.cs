@@ -2,30 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChargeAndDashState : PlayerState
+public class ChargeState : PlayerState
 {
     TimeManager timeManager;
     bool canDash;
-    public ChargeAndDashState(Player player, PlayerStateMachine stateMachine) : base(player, stateMachine)
+    public ChargeState(Player player, PlayerStateMachine stateMachine) : base(player, stateMachine)
     {
-        movementController.UnableToDash += UnableToDash;
         timeManager = player.TimeManager;
-    }
-
-    public override void Update()
-    {
-        base.Update();
-        ChargeTheAttack();
-    }
-    public override void FixedUpdate()
-    {
-        base.FixedUpdate();
-
+        movementController.UnableToDash += UnableToDash;
+        player.InputReader.chargeEnd += DashAndChangeState;
     }
     public override void Enter()
     {
         base.Enter();
-        if (HasStamina())
+        if (!movementController.InsufficientStamina)
         {
             timeManager.BeginSlowMotion();
             player.Sword.StartChargeEffect(1 / movementController.RemainingStaminaPercent());
@@ -33,29 +23,31 @@ public class ChargeAndDashState : PlayerState
         }
         else stateMachine.ChangeStateToIdle();
     }
+
+    public override void Update()
+    {
+        base.Update();
+        ChargeTheAttack();
+    }
+
+    public override void FixedUpdate()
+    {
+        base.FixedUpdate();
+
+    }
+
     public override void Exit()
     {
         base.Exit();
+        player.InputReader.chargeBegin += stateMachine.ChangeStateToCharge;
         player.Sword.SpeedUpChargeEffect();
         timeManager.EndSlowMotion();
         animationHandler.SetCharge(false);
     }
 
-    private bool HasStamina()
-    {
-        return !movementController.InsufficientStamina;
-    }
-
     public void ChargeTheAttack()
     {
-        if (Input.GetButton("Charge"))
-        {
-            movementController.Charge();
-        }
-        if (Input.GetButtonUp("Charge"))
-        {
-            DashAndChangeState();
-        }
+        movementController.Charge();
     }
 
     private void DashAndChangeState()
